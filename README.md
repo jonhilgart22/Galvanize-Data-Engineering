@@ -4,11 +4,12 @@ Welcome to Intro to Data Engineering!
 
 _See [syllabus.md](syllabus.md) for the current syllabus._
 
-## Schedule
+## Schedule Overview
 Organized by weeks and days:  
-(_subject to change_)
+(_subject to change;  
+see detailed schedule [below](#detailed-schedule)_)
 
-1. Welcome to Data Engineering  
+1. [Welcome to Data Engineering](#week-1-welcome-to-data-engineering)  
 (_N.B._ Class starts on a Thursday this minimester.)
     1. [Data Engineering Overview](Course Overview/README.md)
     2. [How the Internet Works](The Internet/README.md)
@@ -48,3 +49,14 @@ Organized by weeks and days:
     2. Final Project Work Session      
     3. Project Presentations: Day 1    
     4. Project Presentations: Day 2     
+
+## Detailed Schedule
+
+### Week 1: Welcome to Data Engineering  
+
+| Day | Readings | Lecture | Assignment |
+|:---:|:-------- |:------- |:---------- |
+| Thursday | [Data Engineering Overview](Course Overview/README.md) | [Intro to Data Engineering](Course Overview/lecture_intro_to_data_engineering.ipynb) | [Conencting to the Cloud with Python](Course Overview/lab.md) |
+| Friday | [How the Internet Works](The Internet/README.md) | [How the Web Works](http://slides.com/wesleyreid/how-the-web-works) | [Generating Reports](The Internet/lab.md) |
+
+### Week 2: Linux and the Cloud
