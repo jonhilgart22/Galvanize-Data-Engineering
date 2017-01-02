@@ -295,9 +295,9 @@ HTML provides generic tags for us that help us style the page. The `<div>` [tag]
 
 These tags are heavily used on web pages with CSS to help add style to the page. We'll talk more about them then.
 
-## Exercise
+## Optional (but recommended) Exercise
 
-https://github.com/gSchool/html-intro
+[HTML Introduction Exercise](html-intro/README.md)
 
 ## Validating
 
