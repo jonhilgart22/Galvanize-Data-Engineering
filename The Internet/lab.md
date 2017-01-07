@@ -2,6 +2,10 @@ Generating Reports
 ====
 Our first report will be a simple one: what are the top 10 trending topics on Twitter today or T6. 
 
+**Don't forget:**
+
+	$ source activate dsci6007
+
 Part 1: Of Consumer Keys and Access Tokens
 ----
 
@@ -35,7 +39,7 @@ Consult the [Twitter Developer Documentation](https://dev.twitter.com/rest/publi
 Part 3: Generating the Report
 ----
 
-You are limited only by your creativity in how you want to generate this report. The only constraint is that it be in the form of a static web page. The simplest thing would probably be to load the data into a pandas DataFrame and call the `.to_html()` method. This main downside to this is that it makes your script dependent upon pandas. When we deploy your script to EC2, this will slow you down as pandas has a lot of dependencies. 
+You are limited only by your creativity in how you want to generate this report in the form of a HTML page named `top10.html`. The only constraint is that it be in the form of a static web page. The simplest thing would probably be to load the data into a pandas DataFrame and call the `.to_html()` method. This main downside to this is that it makes your script dependent upon pandas. When we deploy your script to EC2, this will slow you down as pandas has a lot of dependencies. 
 
 On the other hand, if you want to be more fancy (and don't mind a lot of dependencies) you might try generating a bar plot or some other visualization (a word cloud, perhaps?). You could either output this to SVG and embed it in your HTML or you could output it as an image file and reference it using the HTML `IMG` tag.
 

@@ -54,9 +54,7 @@ see detailed schedule [below](#detailed-schedule)_)
 
 ### Week 1: Welcome to Data Engineering  
 
-| Day | Readings | Lecture | Assignment |
-|:---:|:-------- |:------- |:---------- |
-| Thursday | [Data Engineering Overview](Course Overview/README.md) | [Intro to Data Engineering](Course Overview/lecture_intro_to_data_engineering.ipynb) | [Conencting to the Cloud with Python](Course Overview/lab.md) |
-| Friday | [How the Internet Works](The Internet/README.md) | [How the Web Works](http://slides.com/wesleyreid/how-the-web-works) | [Generating Reports](The Internet/lab.md) |
-
-### Week 2: Linux and the Cloud
+| Day      | Readings | Lecture(s) | Assignment |
+|:--------:|:-------- |:---------- |:---------- |
+| Thursday | [Data Engineering Overview](Course Overview/README.md) | 1. [Intro to Data Engineering](Course Overview/lecture_intro_to_data_engineering.ipynb) <BR /> 2. [Intro to the Cloud](Course Overview/lecture_intro_to_the_cloud.ipynb) | [Conencting to the Cloud with Python](Course Overview/lab.md) |
+| Friday   | [How the Internet Works](The Internet/README.md) | [How the Web Works](http://slides.com/wesleyreid/how-the-web-works) | [Generating Reports](The Internet/lab.md) |
