@@ -19,9 +19,9 @@ see detailed schedule [below](#detailed-schedule)_)
     3. The Cloud
     4. Intro to NoSQL
 3. SQL (The Lingua Franca of Data)
-    1. Message Brokers
-    2. Advanced SQL
-    3. Relational Data Modeling
+    1. PostgreSQL
+    2. Relational Data Modeling
+    3. Message Brokers
     4. Review Day / Project Proposal Check-in
 4. MapReduce (Divide-and-conquer for Distributed Systems)
     1. Distributed Processing
