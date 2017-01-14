@@ -34,7 +34,7 @@ In this course we will be needing a lot of AWS. Following the instructions below
 ### Step 1: Create an AWS account
 
 1. Watch [Creating An AWS Account - Part 1](http://infiniteskills.bc.cdn.bitgravity.com/iskills-media/awsintro-demo/0104.mp4).  
-This videos walk you through the actual process of setting up an AWS account as well the importance of setting up Identity & Access Management (IAM) accounts within that. For now, you only need to do the first part in order to proceed with the next step (that is, getting your Activate credit).
+This videos walk you through the actual process of setting up an AWS account as well the importance of setting up Identity & Access Management (IAM) accounts within that. For now, you only need to do the first part in order to proceed with the next step (that is, getting your Activate credit). You might also find reading [EC2 for Poets](http://ec2.forpoets.org/) helpful.
 
 2. Go to [http://aws.amazon.com/](http://aws.amazon.com/) and sign up:
 
@@ -99,7 +99,7 @@ Setting this up and installing the necessary packages will be the first part of 
 - Received \$1000 in promotional AWS credit
 - Created an account for a Twitter "app"
 
-Finally, here are some resources about data engineering in general to whet your appitite for what's to come.  
+Finally, here are some resources about data engineering in general to whet your appetite for what's to come.  
 (_These are optional._)  
 
 - Watch: [Bridging the Gap Between Data Science and Data Engineering](https://www.youtube.com/watch?v=EtYv7zPyS2A)
