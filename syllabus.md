@@ -2,7 +2,7 @@
 
 ### Logistics
 
-__Instructors:__ [Alessandro Gagliardi](mailto:alessandro@galvanize.com) & [Jared Thompson](mailto:jared.thompson@galvanize.com)  
+__Instructors:__ [Alessandro Gagliardi](mailto:alessandro@galvanize.com)  
 __Office Hours:__ By Appointment  
 __Data Scientist-in-Residence:__ [Conor Murphy](mailto:conorbmurphy@gmail.com)  
 

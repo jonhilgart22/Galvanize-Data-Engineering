@@ -27,11 +27,11 @@ see detailed schedule [below](#detailed-schedule)_)
     1. Distributed Processing
     2. The MapReduce Algorithm & Hadoop
     3. MapReduce Design Patterns
-    4. NoSQL: Redshift and Cassandra
+    4. Spark: Overview
 5. Spark
-    1. Spark: Overview
-    2. Spark: DataFrames & DataSets
-    3. Spark SQL
+    1. Spark: DataFrames & DataSets
+    2. Spark SQL
+    3. NoSQL: Redshift and Cassandra
     4. Advanced Spark
 6. Machine Learning at Scale  
 (_N.B._ Monday's class moved to Wednesday on account of President's Day)
