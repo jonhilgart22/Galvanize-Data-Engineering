@@ -13,7 +13,7 @@ see detailed schedule [below](#detailed-schedule)_)
 (_N.B._ Class starts on a Thursday this minimester.)
     1. [Data Engineering Overview](Course Overview)
     2. [How the Internet Works](The Internet)
-2. Linux and the Cloud
+2. [Linux and the Cloud](#week-2-linux-and-the-cloud)
     1. [Virtualization](Virtualization)
     2. [Linux](Linux)
     3. [The Cloud](The Cloud)
