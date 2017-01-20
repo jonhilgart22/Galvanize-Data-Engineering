@@ -11,13 +11,13 @@ see detailed schedule [below](#detailed-schedule)_)
 
 1. [Welcome to Data Engineering](#week-1-welcome-to-data-engineering)  
 (_N.B._ Class starts on a Thursday this minimester.)
-    1. [Data Engineering Overview](Course Overview/README.md)
-    2. [How the Internet Works](The Internet/README.md)
+    1. [Data Engineering Overview](Course Overview)
+    2. [How the Internet Works](The Internet)
 2. Linux and the Cloud
-    1. Virtualization
-    2. Linux
-    3. The Cloud
-    4. Intro to NoSQL
+    1. [Virtualization](Virtualization)
+    2. [Linux](Linux)
+    3. [The Cloud](The Cloud)
+    4. [Intro to NoSQL](Intro to NoSQL)
 3. SQL (The Lingua Franca of Data)
     1. PostgreSQL
     2. Relational Data Modeling
@@ -58,3 +58,12 @@ see detailed schedule [below](#detailed-schedule)_)
 |:--------:|:-------- |:---------- |:---------- |
 | Thursday | [Data Engineering Overview](Course Overview/README.md) | 1. [Intro to Data Engineering](Course Overview/lecture_intro_to_data_engineering.ipynb) <BR /> 2. [Intro to the Cloud](Course Overview/lecture_intro_to_the_cloud.ipynb) | [Conencting to the Cloud with Python](Course Overview/lab.md) |
 | Friday   | [How the Internet Works](The Internet/README.md) | [How the Web Works](http://slides.com/wesleyreid/how-the-web-works) | [Generating Reports](The Internet/lab.md) |
+
+### Week 2: Linux and the Cloud
+
+| Day      | Readings | Lecture(s) | Assignment |
+|:--------:|:-------- |:---------- |:---------- |
+| Monday   | [Virtualization](Virtualization/README.md) | [Virtualization & Docker](Virtualization/lecture_virtualization.ipynb) | [Your Very Own Web Server](Virtualization/lab.md) |
+| Tuesday  | [\*NIX](Linux/README.md) | [Linux](Linux/lecture_linux.ipynb) | [Linux Intro](Linux/lab.md) |
+| Thursday | [Introduction to Clouds](The Cloud/README.md) | 1. [The Cloud & AWS](The Cloud/lecture_the_cloud2_EC2.ipynb) <BR /> 2. [EC2 & cron](The Cloud/lecture_cron_ec2.ipynb) | [Move your Linux machine to the Cloud](The Cloud/lab.md) |
+| Friday | [Working with MongoDB](NoSQL/README.md) | 1. [NoSQL for Dummies](NoSQL/lecture_nosql_intro.ipynb) <BR /> 2. [Even more NoSQL](NoSQL/lecture_mongoDB.ipynb) | [Streaming Tweets into Mongo](NoSQL/lab.md) |
