@@ -8,7 +8,7 @@
 
 # In[ ]:
 
-get_ipython().system('/usr/bin/env python')
+#get_ipython().system('/usr/bin/env python')
 
 
 # In[42]:
@@ -18,6 +18,7 @@ import os
 import yaml
 import pandas as pd
 import boto
+from twitter import *
 credentials = yaml.load(open(os.path.expanduser('~/api_credentials.yml')))
 #credentials['twitter'].get('consumer_key')
 
@@ -36,28 +37,20 @@ def top_n_tweets_us(n):
     us_trends = t.trends.place(_id=23424977)
     trending_tweets_us = pd.DataFrame([i for i in us_trends[0]['trends']])
     trending_tweets_us = trending_tweets_us.sort_values(by='tweet_volume',ascending=False)
-    html_trending_tweets = trending_tweets_us[:n].to_html()
-    return html_trending_tweets_tweets
+    return trending_tweets_us[:n].to_html('top10.html')
 
 
 
-# In[62]:
-
-html_trending_tweets = top_n_tweets_us(10)
-
-# In[63]:
-
-conn = boto.connect_s3()
 
 
-# In[64]:
 
-conn.get_all_buckets()
 
 
 # In[57]:
+top_n_tweets_us(10)
 
-jh_bucket = conn.create_bucket('the_internet')
+# html_index = 
+# html_index.to_html('index.html')
 
 
 # In[65]:
@@ -68,25 +61,24 @@ error_html = """
   <body><h2>Something is terribly wrong with my S3-based website</h2></body>
 </html>"""
 
+Html_file= open("error.html","w")
+Html_file.write(error_html)
+Html_file.close()
 
-# In[66]:
-
-index_key = jh_bucket.new_key('index.html')
-index_key.content_type = 'text/html'
-index_key.set_contents_from_string(html_trending_tweets, policy='public-read')
-
-error_key = jh_bucket.new_key('error.html')
-error_key.content_type = 'text/html'
-error_key.set_contents_from_string(error_html, policy='public-read')
-
-
-# In[68]:
-
-# Top ten trending tweets in the US
-# https://s3.amazonaws.com/the_internet/index.html
+index_html = """
+<html>
+  <head><title>Hello World!</title></head>
+  <body><h2>Welcome!</h2></body>
+</html>
+"""
+Html_file= open("index.html","w")
+Html_file.write(index_html)
+Html_file.close()
 
 
-# In[ ]:
+
+
+
 
 
 
