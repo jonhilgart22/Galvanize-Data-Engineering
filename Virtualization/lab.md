@@ -11,7 +11,14 @@ By now you should have installed [VirtualBox](https://www.virtualbox.org/wiki/Do
 
 	to generate a Vagrantfile.
 
-2. Open the Vagrantfile and uncomment the private_network line & change to your desired IP:
+2. start and ssh into your new machine to make sure it works
+
+		vagrant up
+		vagrant ssh
+
+	- `exit` to disconnect
+
+3. Open the Vagrantfile and uncomment the private_network line & change to your desired IP:
 
     	config.vm.network "private_network", ip: "22.22.22.22"
 
@@ -19,9 +26,9 @@ By now you should have installed [VirtualBox](https://www.virtualbox.org/wiki/Do
    		- run `sudo open /etc/hosts -a atom` to open your /etc/hosts file in Atom
     	- add this line to the end of the file and save `22.22.22.22 mytestsite.com`
 
-3. start and ssh into your new machine
+4. reload and ssh into your new machine
 
-		vagrant up
+		vagrant reload
 		vagrant ssh
 
 	One of the neat things about Vagrant is that it automatically maps the directory on the host machine where the Vagrantfile is located to the `/vagrant/` directory on the VM. So any files that are in the same directory as your Vagrantfile (including the Vagrantfile itself) should be visible if you navigate to `/vagrant/`. For example, if you run `head /vagrant/Vagrantfile` you should see something like:
