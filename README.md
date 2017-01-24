@@ -13,7 +13,7 @@ see detailed schedule [below](#detailed-schedule)_)
 (_N.B._ Class starts on a Thursday this minimester.)
     1. [Data Engineering Overview](Course Overview)
     2. [How the Internet Works](The Internet)
-2. Linux and the Cloud
+2. [Linux and the Cloud](#week-2-linux-and-the-cloud)
     1. [Virtualization](Virtualization)
     2. [Linux](Linux)
     3. [The Cloud](The Cloud)
@@ -29,7 +29,7 @@ see detailed schedule [below](#detailed-schedule)_)
     3. MapReduce Design Patterns
     4. Spark: Overview
 5. Spark
-    1. Spark: DataFrames & DataSets
+    1. Spark: DataFrames & Datasets
     2. Spark SQL
     3. NoSQL: Redshift and Cassandra
     4. Advanced Spark
@@ -66,4 +66,4 @@ see detailed schedule [below](#detailed-schedule)_)
 | Monday   | [Virtualization](Virtualization/README.md) | [Virtualization & Docker](Virtualization/lecture_virtualization.ipynb) | [Your Very Own Web Server](Virtualization/lab.md) |
 | Tuesday  | [\*NIX](Linux/README.md) | [Linux](Linux/lecture_linux.ipynb) | [Linux Intro](Linux/lab.md) |
 | Thursday | [Introduction to Clouds](The Cloud/README.md) | 1. [The Cloud & AWS](The Cloud/lecture_the_cloud2_EC2.ipynb) <BR /> 2. [EC2 & cron](The Cloud/lecture_cron_ec2.ipynb) | [Move your Linux machine to the Cloud](The Cloud/lab.md) |
-| Friday | [Working with MongoDB](NoSQL/README.md) | 1. [NoSQL for Dummies](NoSQL/lecture_nosql_intro.ipynb) <BR /> 2. [Even more NoSQL](NoSQL/lecture_mongoDB.ipynb) | [Streaming Tweets into Mongo](NoSQL/lab.md) |
+| Friday | [Working with MongoDB](Intro to NoSQL/README.md) | 1. [NoSQL for Dummies](Intro to NoSQL/lecture_nosql_intro.ipynb) <BR /> 2. [Even more NoSQL](Intro to NoSQL/lecture_mongoDB.ipynb) | [Streaming Tweets into Mongo](Intro to NoSQL/lab.md) |
