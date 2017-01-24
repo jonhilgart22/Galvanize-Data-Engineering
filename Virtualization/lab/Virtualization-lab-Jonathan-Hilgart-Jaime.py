@@ -17,7 +17,6 @@
 import os
 import yaml
 import pandas as pd
-import boto
 from twitter import *
 credentials = yaml.load(open(os.path.expanduser('~/api_credentials.yml')))
 #credentials['twitter'].get('consumer_key')
