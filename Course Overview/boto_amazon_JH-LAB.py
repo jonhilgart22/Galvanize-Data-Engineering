@@ -38,7 +38,7 @@ print(shakes_count.most_common(20))
 
 #http://stackoverflow.com/questions/15578331/save-list-of-ordered-tuples-as-csv
 #save as a filr first
-with open('sorted_top_20.csv', 'w') as f:  # Just use 'w' mode in 3.x
+with open('sorted_top_20.csv', 'wb') as f:  # Just use 'w' mode in 3.x
     w = csv.writer(f)
     w.writerow(['word','frequency'])
     for row in twenty_most_common_words:
