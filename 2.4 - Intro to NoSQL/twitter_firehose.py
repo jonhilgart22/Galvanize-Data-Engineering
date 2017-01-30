@@ -14,6 +14,17 @@ client = MongoClient()
 db = client.twitter ## name of the database
 sample=twitter_stream.statuses.sample()
 ### run through the tweets
-while True:
+try:
+    while True:
+        t = next(sample)
+        db.streamingtweets.insert_one(t) ## insert item into the database
+    #in case the while break
     t = next(sample)
-    db.streamingtweets.insert_one(t) ## insert item into the database
+    db.streamingtweets.insert_one(t)
+except: ## in case the connection breaks
+    while True:
+        t = next(sample)
+        db.streamingtweets.insert_one(t) ## insert item into the database
+    #in case the while break
+    t = next(sample)
+    db.streamingtweets.insert_one(t)
