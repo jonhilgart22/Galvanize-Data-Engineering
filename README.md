@@ -25,7 +25,7 @@ see detailed schedule [below](#detailed-schedule)_)
     4. [Review Day / Project Proposal Check-in](3.4 - Projects)
 4. [MapReduce (Divide-and-conquer for Distributed Systems)](#week-4-mapreduce-divide-and-conquer-for-distributed-systems)
     1. [Message Brokers](4.1 - Message Brokers)
-    2. [Distributed Processing](4.2 - Distrubted Systems)
+    2. [Distributed Processing](4.2 - Distributed Systems)
     3. [The MapReduce Algorithm & Hadoop](4.3 - MapReduce Intro)
     4. [MapReduce Design Patterns](4.4 - MapReduce Design Patterns)
 5. Spark (What to add to your LinkedIn profile)
@@ -81,7 +81,7 @@ see detailed schedule [below](#detailed-schedule)_)
 
 | Day      | Readings | Lecture(s) | Assignment |
 |:--------:|:-------- |:---------- |:---------- |
-| Monday | [I ♥ Logs](3.3 - Message Brokers/README.md) | [Apache Kafka](3.3 - Message Brokers/lecture_kafka.ipynb) | [Drinking from the Firehose](3.3 - Message Brokers/lab.md) |
-| Tuesday  | [Intro to Parallelization](Distributed Systems/README.md) | [Distributed Computing](Distributed Systems/lecture_distrbuted_systems.ipynb) | [Embarrassingly Parallel](Distributed Systems/lab.md) |
-| Thursday | [HDFS and MapReduce](MapReduce Intro/README.md) | [MapReduce](MapReduce Intro/lecture_map_reduce.ipynb) | [Scaling Out](MapReduce Intro/lab.md) |
-| Friday   | [MapReduce Design Patterns](MapReduce Design Patterns/README.md) | [Hadoop Ecosystem](MapReduce Design Patterns/lecture_hadoop_ecosystem.ipynb) | [Meet MrJob](MapReduce Design Patterns/lab.md) |
+| Monday | [I ♥ Logs](4.1 - Message Brokers/README.md) | [Apache Kafka](4.1 - Message Brokers/lecture_kafka.ipynb) | [Drinking from the Firehose](4.1 - Message Brokers/lab.md) |
+| Tuesday  | [Intro to Parallelization](4.2 - Distributed Systems/README.md) | [Distributed Computing](4.2 - Distributed Systems/lecture_distrbuted_systems.ipynb) | [Embarrassingly Parallel](4.2 - Distributed Systems/lab.md) |
+| Thursday | [HDFS and MapReduce](4.3 - MapReduce Intro/README.md) | [MapReduce](4.3 - MapReduce Intro/lecture_map_reduce.ipynb) | [Scaling Out](4.3 - MapReduce Intro/lab.md) |
+| Friday   | [MapReduce Design Patterns](4.4 - MapReduce Design Patterns/README.md) | [Hadoop Ecosystem](4.4 - MapReduce Design Patterns/lecture_hadoop_ecosystem.ipynb) | [Meet MrJob](4.4 - MapReduce Design Patterns/lab.md) |
