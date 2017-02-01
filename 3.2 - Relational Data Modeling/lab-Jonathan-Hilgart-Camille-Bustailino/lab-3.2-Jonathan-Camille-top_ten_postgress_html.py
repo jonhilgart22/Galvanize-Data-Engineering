@@ -16,13 +16,13 @@ user=db_user,\
 host=database_endpoint,\
 password=db_password)
 cur = conn.cursor()
-while True:## ask user for input on what to query for
-    query = raw_input("Please type a query (this table is called raw_tweets)")
-    #print(query)
-    try: ## see if it worked
-        #curr.execute("""{}""".format(query))
-        curr.execute(""" {} """.format(query))
-        rows = cur.fetchall()
-        print(rows)
-    except:
-        print('Please try another query.')
+###select statement
+cur.execute("""select COUNT(normalized_hashtags.normalized_hashtags) as hashtag_number,
+CAST(normalized_hashtags as TEXT)
+from normalized_hashtags
+group by CAST(normalized_hashtags as TEXT)
+order by hashtag_number DESC
+limit 10;""")
+rows = cur.fetchall()
+rows_df = pd.DataFrame(rows,columns=['occurance','hashtag'])
+rows_df.to_html('index.html')
