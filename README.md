@@ -21,18 +21,18 @@ see detailed schedule [below](#detailed-schedule)_)
 3. [SQL (The Lingua Franca of Data)](#week-3-sql-the-lingua-franca-of-data)
     1. [PostgreSQL](3.1 - PostgreSQL)
     2. [Relational Data Modeling](3.2 - Relational Data Modeling)
-    3. [Message Brokers](3.3 - Message Brokers)
+    3. [Query Optimization](3.3 - Query Optimization)
     4. [Review Day / Project Proposal Check-in](3.4 - Projects)
-4. MapReduce (Divide-and-conquer for Distributed Systems)
-    1. Distributed Processing
-    2. The MapReduce Algorithm & Hadoop
-    3. MapReduce Design Patterns
-    4. Spark: Overview
+4. [MapReduce (Divide-and-conquer for Distributed Systems)](#week-4-mapreduce-divide-and-conquer-for-distributed-systems)
+    1. [Message Brokers](4.1 - Message Brokers)
+    2. [Distributed Processing](4.2 - Distributed Systems)
+    3. [The MapReduce Algorithm & Hadoop](4.3 - MapReduce Intro)
+    4. [MapReduce Design Patterns](4.4 - MapReduce Design Patterns)
 5. Spark (What to add to your LinkedIn profile)
+    4. Spark: Overview
     1. Spark: DataFrames & Datasets
     2. Spark SQL
     3. NoSQL: Redshift and Cassandra
-    4. Advanced Spark
 6. Machine Learning at Scale  
 (_N.B._ Monday's class moved to Wednesday on account of President's Day)
     1. (Tuesday) Review Day
@@ -72,7 +72,16 @@ see detailed schedule [below](#detailed-schedule)_)
 
 | Day      | Readings | Lecture(s) | Assignment |
 |:--------:|:-------- |:---------- |:---------- |
-| Monday   | [Not Only SQL](3.1 - PostgreSQL/README.md) | 1. [Advanced Querying](3.1 - PostgreSQL/lecture_sql_advanced_querying.ipynb) <BR /> 2. [SQL Optimization](3.1 - PostgreSQL/lecture_sql_optimization.ipynb) | [RDS](3.1 - PostgreSQL/lab.md) |
+| Monday   | [Not Only SQL](3.1 - PostgreSQL/README.md) | [Advanced Querying](3.1 - PostgreSQL/lecture_sql_advanced_querying.ipynb) | [RDS](3.1 - PostgreSQL/lab.md) |
 | Tuesday  | [Relational Design](3.2 - Relational Data Modeling/README.md) | [Relational Database Modeling](3.2 - Relational Data Modeling/lecture_relational_model.ipynb) | [Data Modeling Practice](3.2 - Relational Data Modeling/lab.md) |
-| Thursday | [I ♥ Logs](3.3 - Message Brokers/README.md) | [Apache Kafka](3.3 - Message Brokers/lecture_kafka.ipynb) | [Drinking from the Firehose](3.3 - Message Brokers/lab.md) |
+| Thursday | [Tuning SQL](3.3 - Query Optimization/README.md) | [SQL Optimization](3.3 - Query Optimization/lecture_sql_optimization.ipynb) | [Client-Server](3.3 - Query Optimization/lab.md)
 | Friday   | [Projects](3.4 - Projects/README.md) | [Requirements](3.4 - Projects/project_proposal.ipynb) | [Proposal](3.4 - Projects/lab.md) |
+
+### Week 4: MapReduce (Divide-and-conquer for Distributed Systems)
+
+| Day      | Readings | Lecture(s) | Assignment |
+|:--------:|:-------- |:---------- |:---------- |
+| Monday | [I ♥ Logs](4.1 - Message Brokers/README.md) | [Apache Kafka](4.1 - Message Brokers/lecture_kafka.ipynb) | [Drinking from the Firehose](4.1 - Message Brokers/lab.md) |
+| Tuesday  | [Intro to Parallelization](4.2 - Distributed Systems/README.md) | [Distributed Computing](4.2 - Distributed Systems/lecture_distrbuted_systems.ipynb) | [Embarrassingly Parallel](4.2 - Distributed Systems/lab.md) |
+| Thursday | [HDFS and MapReduce](4.3 - MapReduce Intro/README.md) | [MapReduce](4.3 - MapReduce Intro/lecture_map_reduce.ipynb) | [Scaling Out](4.3 - MapReduce Intro/lab.md) |
+| Friday   | [MapReduce Design Patterns](4.4 - MapReduce Design Patterns/README.md) | [Hadoop Ecosystem](4.4 - MapReduce Design Patterns/lecture_hadoop_ecosystem.ipynb) | [Meet MrJob](4.4 - MapReduce Design Patterns/lab.md) |
