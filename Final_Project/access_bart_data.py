@@ -2,6 +2,7 @@
 __author__='Jonathan Hilgart'
 import requests
 from lxml import etree
+from StringIO import StringIO
 ## Access the bart api
 bart_key = 'QUZL-PQ66-9XYT-DWE9'
 payload = {'cmd': 'etd', 'orig': '16th','key':bart_key}
@@ -12,9 +13,17 @@ print(r.status_code)
 content = r.content
 print(type(content)),'content'
 print(type(r),'type')
+
 print(r.encoding,'encoding')
 
-
+tree = etree.parse(StringIO(content))
+context = etree.iterparse(StringIO(content))
+for action, elem in context:
+    if not elem.text:
+        text = "None"
+    else:
+        text = elem.text
+    print elem.tag + " => " + text
 
 
 ##stations
