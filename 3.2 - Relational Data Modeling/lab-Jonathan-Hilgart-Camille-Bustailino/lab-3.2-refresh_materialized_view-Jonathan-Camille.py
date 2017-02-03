@@ -17,3 +17,5 @@ password=db_password)
 cur = conn.cursor()
 ###select statement
 cur.execute("""REFRESH MATERIALIZED VIEW normalized_hashtags;""")
+conn.close()
+cur.close()
