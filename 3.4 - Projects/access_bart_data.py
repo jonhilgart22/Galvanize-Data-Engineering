@@ -8,6 +8,7 @@ import pandas as pd
 import datetime
 import pytz
 import time
+
 SF_time = pytz.timezone('US/Pacific')
 current_sf_time = datetime.datetime.now(SF_time)
 raw_time_sf = time.strftime('{}'.format(current_sf_time)).split(' ')
@@ -26,9 +27,6 @@ params=payload)
 print(r.status_code)
 content = r.content
 print(type(content)),'content'
-file = open('final_project_data.txt','wr')
-file.write(content)
-file.close()
 print(type(r),'type')
 
 print(r.encoding,'encoding')
