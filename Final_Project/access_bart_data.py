@@ -9,6 +9,10 @@ import datetime
 import pytz
 import time
 from collections import defaultdict
+import yaml
+import os
+#credentials
+credentials = yaml.load(open(os.path.expanduser('~/data_engineering_final_credentials.yml')))
 ## Get the current time in San Francisco
 SF_time = pytz.timezone('US/Pacific')
 current_sf_time = datetime.datetime.now(SF_time)
@@ -16,8 +20,9 @@ date_sf , raw_time_sf= time.strftime('{}'.format(current_sf_time)).split(' ')
 sf_hour,sf_minute = int(raw_time_sf[:2]), int(raw_time_sf[3:5])
 print('{}:{}'.format(sf_hour,sf_minute),'Current SF time')
 
+
 ## Access the bart api
-bart_key = 'QUZL-PQ66-9XYT-DWE9'
+bart_key = credentials['bart'].get('key')
 payload = {'cmd': 'etd', 'orig': '16th','dir':'n','key':bart_key}
 
 #http://api.bart.gov/api/etd.aspx?cmd=etd&orig=12th&key=MW9S-E7SL-26DU-VV8V
@@ -40,7 +45,7 @@ def bart_xml_parser(xml_context):
     """Parse the xml for the bart api. Return two pandas dataframes.
     One that shows the arrival time (minutes) fora  destination station.
     The second that sows the number of train cars for a destination.
-    If there are not three time projections for a given trainm a default estimate of 90 minutes is given."""
+    If there are not three time projections for a given train a default estimate of 90 minutes is given."""
     destination_station=''
     destination_minutes =defaultdict(int)
     destination_train_size=defaultdict(int)
@@ -56,7 +61,7 @@ def bart_xml_parser(xml_context):
             destination_minutes[destination_station]=[]
             destination_train_size[destination_station]=[]
         elif elem.tag =='minutes':
-            if text =='leaving': ## This train is leaving now!
+            if text =='Leaving': ## This train is leaving now!
                 destination_minutes[destination_station].append(0)
             else:
                 destination_minutes[destination_station].append(int(text))
@@ -68,7 +73,7 @@ def bart_xml_parser(xml_context):
             [destination_minutes[k].append(90) for _ in range(3-len(v))]
     for k,v in destination_train_size.iteritems(): # check if there are not the same number of trains coming
         if len(v)<3:
-            [destination_train_size[k].append(90) for _ in range(3-len(v))]
+            [destination_train_size[k].append(v[0]) for _ in range(3-len(v))]
     destination_minutes_df = pd.DataFrame(destination_minutes)
     destination_train_size_df = pd.DataFrame(destination_train_size)
     print(destination_minutes_df , 'destination minutes df')

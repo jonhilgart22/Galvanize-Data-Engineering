@@ -1,0 +1,5 @@
+data sources
+
+https://www.climate.gov/maps-data/dataset/past-weather-zip-code-data-table
+http://www.bart.gov/about/reports/ridership
+https://openweathermap.org/current
