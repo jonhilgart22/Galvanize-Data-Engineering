@@ -11,6 +11,7 @@ import time
 from collections import defaultdict
 import yaml
 import os
+import argparse
 #credentials
 credentials = yaml.load(open(os.path.expanduser('~/data_engineering_final_credentials.yml')))
 ## Get the current time in San Francisco
@@ -23,7 +24,15 @@ print('{}:{}'.format(sf_hour,sf_minute),'Current SF time')
 
 ## Access the bart api
 bart_key = credentials['bart'].get('key')
-payload = {'cmd': 'etd', 'orig': '16th','dir':'n','key':bart_key}
+##create a parser object to allow variables to be submitted from the terminal
+parser = argparse.ArgumentParser(description='Inputs for bart train.')
+parser.add_argument('origin_station')
+parser.add_argument('direction')
+bart_args = vars(parser.parse_args())
+origin_station_arg = bart_args['origin_station']
+direction_arg = bart_args['direction']
+# add in the terminal arguments to the payload for the bart api
+payload = {'cmd': 'etd', 'orig': origin_station_arg,'dir':direction_arg,'key':bart_key}
 
 #http://api.bart.gov/api/etd.aspx?cmd=etd&orig=12th&key=MW9S-E7SL-26DU-VV8V
 r = requests.get('http://api.bart.gov/api/etd.aspx',\
@@ -33,7 +42,6 @@ content = r.content
 file = open('final_project_data.txt','wr')
 file.write(content)
 file.close()
-
 
 ##parse the XML returned by the BART api
 tree = etree.parse(StringIO(content))
@@ -67,7 +75,6 @@ def bart_xml_parser(xml_context):
                 destination_minutes[destination_station].append(int(text))
         elif elem.tag =='length':
             destination_train_size[destination_station].append(int(text))
-        print elem.tag + " => " + text
     for k,v in destination_minutes.iteritems(): # check if there are not the same number of trains coming
         if len(v)<3:
             [destination_minutes[k].append(90) for _ in range(3-len(v))]
@@ -79,8 +86,6 @@ def bart_xml_parser(xml_context):
     print(destination_minutes_df , 'destination minutes df')
     print(destination_train_size_df,'train size df')
 bart_xml_parser(context)
-## NAME is the orig station, where the car is now, destination is where
-#the train is heading
 
 
 ##stations
