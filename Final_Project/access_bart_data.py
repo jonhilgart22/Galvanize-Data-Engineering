@@ -21,7 +21,6 @@ date_sf , raw_time_sf= time.strftime('{}'.format(current_sf_time)).split(' ')
 sf_hour,sf_minute = int(raw_time_sf[:2]), int(raw_time_sf[3:5])
 print('{}:{}'.format(sf_hour,sf_minute),'Current SF time')
 
-
 ## Access the bart api
 bart_key = credentials['bart'].get('key')
 ##create a parser object to allow variables to be submitted from the terminal
@@ -46,8 +45,6 @@ file.close()
 ##parse the XML returned by the BART api
 tree = etree.parse(StringIO(content))
 context = etree.iterparse(StringIO(content))
-minute_rows = 0
-bart_df = pd.DataFrame()
 
 def bart_xml_parser(xml_context):
     """Parse the xml for the bart api. Return two pandas dataframes.
