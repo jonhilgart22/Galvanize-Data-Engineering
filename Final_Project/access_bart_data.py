@@ -8,7 +8,7 @@ import pandas as pd
 import datetime
 import pytz
 import time
-from collections import defaultdict
+from collections import defaultdict asdf
 import yaml
 import os
 import argparse
@@ -20,7 +20,6 @@ current_sf_time = datetime.datetime.now(SF_time)
 date_sf , raw_time_sf= time.strftime('{}'.format(current_sf_time)).split(' ')
 sf_hour,sf_minute = int(raw_time_sf[:2]), int(raw_time_sf[3:5])
 print('{}:{}'.format(sf_hour,sf_minute),'Current SF time')
-
 ## Access the bart api
 bart_key = credentials['bart'].get('key')
 ##create a parser object to allow variables to be submitted from the terminal
@@ -32,20 +31,16 @@ origin_station_arg = bart_args['origin_station']
 direction_arg = bart_args['direction']
 # add in the terminal arguments to the payload for the bart api
 payload = {'cmd': 'etd', 'orig': origin_station_arg,'dir':direction_arg,'key':bart_key}
-
 #http://api.bart.gov/api/etd.aspx?cmd=etd&orig=12th&key=MW9S-E7SL-26DU-VV8V
 r = requests.get('http://api.bart.gov/api/etd.aspx',\
 params=payload)
 content = r.content
-#print(type(content)),'content'
 file = open('final_project_data.txt','wr')
 file.write(content)
 file.close()
-
 ##parse the XML returned by the BART api
 tree = etree.parse(StringIO(content))
 context = etree.iterparse(StringIO(content))
-
 def bart_xml_parser(xml_context):
     """Parse the xml for the bart api. Return two pandas dataframes.
     One that shows the arrival time (minutes) fora  destination station.

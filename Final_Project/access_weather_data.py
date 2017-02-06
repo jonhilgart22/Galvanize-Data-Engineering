@@ -7,7 +7,7 @@ import json
 
 credentials = yaml.load(open(os.path.expanduser('~/data_engineering_final_credentials.yml')))
 # SF city id 5391997
-weather_key = credentials['open_weather'].get('key')
+weather_key = credentials['open_weather'].get('key')#sdf
 # units:imperial returns temp in fahrenheit
 payload = {'id':'5391997','units':'imperial','APPID':weather_key}
 
