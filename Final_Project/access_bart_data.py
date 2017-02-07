@@ -1,6 +1,4 @@
 #! usr/bin/env python
-#http://www.blog.pythonlibrary.org/2010/11/20/python-parsing-xml-with-lxml/
-__author__='Jonathan Hilgart'
 import requests
 from lxml import etree
 from StringIO import StringIO
@@ -8,18 +6,25 @@ import pandas as pd
 import datetime
 import pytz
 import time
-from collections import defaultdict asdf
+from collections import defaultdict
 import yaml
 import os
 import argparse
-#credentials
+__author__ = 'Jonathan Hilgart'
+# credentials #http://www.blog.pythonlibrary.org/2010/11/20/python-parsing-xml-with-lxml/
 credentials = yaml.load(open(os.path.expanduser('~/data_engineering_final_credentials.yml')))
 ## Get the current time in San Francisco
 SF_time = pytz.timezone('US/Pacific')
 current_sf_time = datetime.datetime.now(SF_time)
 date_sf , raw_time_sf= time.strftime('{}'.format(current_sf_time)).split(' ')
 sf_hour,sf_minute = int(raw_time_sf[:2]), int(raw_time_sf[3:5])
-print('{}:{}'.format(sf_hour,sf_minute),'Current SF time')
+
+if len(str(sf_minute))==1: ## need to add a zero
+    sf_time_tens = int(0)
+    sf_minute=  sf_minute
+    print('{}:{}{}'.format(sf_hour,sf_time_tens,sf_minute),'Current SF time')
+else:
+    print('{}:{}'.format(sf_hour,sf_minute),'Current SF TIme')
 ## Access the bart api
 bart_key = credentials['bart'].get('key')
 ##create a parser object to allow variables to be submitted from the terminal
@@ -32,7 +37,7 @@ direction_arg = bart_args['direction']
 # add in the terminal arguments to the payload for the bart api
 payload = {'cmd': 'etd', 'orig': origin_station_arg,'dir':direction_arg,'key':bart_key}
 #http://api.bart.gov/api/etd.aspx?cmd=etd&orig=12th&key=MW9S-E7SL-26DU-VV8V
-r = requests.get('http://api.bart.gov/api/etd.aspx',\
+r = requests.get('http://api.bart.gov/api/etd.aspx',
 params=payload)
 content = r.content
 file = open('final_project_data.txt','wr')

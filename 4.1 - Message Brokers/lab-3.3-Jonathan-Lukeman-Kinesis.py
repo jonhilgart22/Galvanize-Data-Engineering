@@ -4,8 +4,9 @@ import os
 import yaml
 import json
 import boto3
-def insert_twitter_firehouse():
 
+
+def insert_twitter_firehouse():
     """Insert twitter tweets into s3 via Amazon kinesis firehose."""
     credentials = yaml.load(open(os.path.expanduser(
                 '~/.ssh/api_credentials.yml')))
@@ -31,6 +32,6 @@ def insert_twitter_firehouse():
                     pass
     print('Exited the while loop')
 
-if __name__ == '__main__':
 
+if __name__ == '__main__':
     insert_twitter_firehouse()
