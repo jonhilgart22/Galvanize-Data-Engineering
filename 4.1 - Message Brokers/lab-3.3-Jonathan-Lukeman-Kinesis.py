@@ -4,25 +4,33 @@ import os
 import yaml
 import json
 import boto3
-credentials = yaml.load(open(os.path.expanduser('~/.ssh/api_credentials.yml')))
-# authenticate with Twitter
-twitter_stream = TwitterStream(auth=OAuth(**credentials['twitter']))
-# use boto here
-client = boto3.client('firehose', region_name='us-east-1')
-# #get Twitter tweets
-sample = twitter_stream.statuses.sample()
-while True:
-    for tweet in sample:
-        try:
-            tweet['delete']  # this will find deleted tweets
-            # and not insert them into
-            print('Found a deleted tweet')
-        except:
+def insert_twitter_firehouse():
+
+    """Insert twitter tweets into s3 via Amazon kinesis firehose."""
+    credentials = yaml.load(open(os.path.expanduser(
+                '~/.ssh/api_credentials.yml')))
+    # authenticate with Twitter
+    twitter_stream = TwitterStream(auth=OAuth(**credentials['twitter']))
+    # use boto here
+    client = boto3.client('firehose', region_name='us-east-1')
+    # #get Twitter tweets
+    sample = twitter_stream.statuses.sample()
+    while True:
+        for tweet in sample:
             try:
-                client.put_record(
-                            DeliveryStreamName='twitter-streaming-data',
-                            Record={'Data': json.dumps(str(tweet)+'\n')})
-                print('wrote a tweet!')
+                tweet['delete']  # this will find deleted tweets
+                # and not insert them into
+                print('Found a deleted tweet')
             except:
-                pass
-print('Exited the while loop')
+                try:
+                    client.put_record(
+                                DeliveryStreamName='twitter-streaming-data',
+                                Record={'Data': json.dumps(str(tweet)+'\n')})
+                    print('wrote a tweet!')
+                except:
+                    pass
+    print('Exited the while loop')
+
+if __name__ == '__main__':
+
+    insert_twitter_firehouse()
