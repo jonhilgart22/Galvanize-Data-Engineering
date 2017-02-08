@@ -26,7 +26,7 @@ def insert_twitter_firehouse():
                 try:
                     client.put_record(
                                 DeliveryStreamName='twitter-streaming-data',
-                                Record={'Data': json.dumps(str(tweet)+'\n')})
+                                Record={'Data': json.dumps(tweet+'\n')})
                     print('wrote a tweet!')
                 except:
                     pass
