@@ -14,6 +14,7 @@ def insert_twitter_firehouse():
     twitter_stream = TwitterStream(auth=OAuth(**credentials['twitter']))
     # use boto here
     client = boto3.client('firehose', region_name='us-east-1')
+    print(client)
     # #get Twitter tweets
     sample = twitter_stream.statuses.sample()
     while True:
@@ -26,10 +27,11 @@ def insert_twitter_firehouse():
                 try:
                     client.put_record(
                                 DeliveryStreamName='twitter-streaming-data',
-                                Record={'Data': json.dumps(tweet+'\n')})
+                                Record={'Data': json.dumps(tweet)+'/n'})
                     print('wrote a tweet!')
                 except:
                     pass
+                    print('could not write to kinesis')
     print('Exited the while loop')
 
 
