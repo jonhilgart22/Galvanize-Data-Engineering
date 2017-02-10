@@ -28,22 +28,22 @@ see detailed schedule [below](#detailed-schedule)_)
     2. [Distributed Processing](4.2 - Distributed Systems)
     3. [The MapReduce Algorithm & Hadoop](4.3 - MapReduce Intro)
     4. [MapReduce Design Patterns](4.4 - MapReduce Design Patterns)
-5. Spark (What to add to your LinkedIn profile)
-    4. Spark: Overview
-    1. Spark: DataFrames & Datasets
-    2. Spark SQL
-    3. NoSQL: Redshift and Cassandra
-6. Machine Learning at Scale  
+5. [Spark (What to add to your LinkedIn profile)](#week-5-spark-what-to-add-to-your-linkedin-profile)
+    1. [Functional Programming](5.1 - Functional Programming)
+    2. [Spark: Overview](5.2 - Spark Overview)
+    3. [Spark: DataFrames & Datasets](5.3 - Spark DataFrames)
+    4. [Spark SQL](5.4 - Spark SQL)
+6. NoSQL for Smarties
 (_N.B._ Monday's class moved to Wednesday on account of President's Day)
     1. (Tuesday) Review Day
-    2. (Wednesday) MLlib: Overview & Collaborative Filtering
-    3. MLlib: Latent Semantic Analysis
-    4. Search
+    2. (Wednesday) NoSQL: Redshift and Cassandra
+    3. Cassandra + Spark
+    4. MLlib: Overview & Collaborative Filtering
 7. Streaming (Everyone **has to have** real-time)
     1. Spark Streaming: Part 1
     2. Spark Streaming: Part 2
-    3. Probabilistic Data Structures: Bloom Filter & Count–min sketch
-    4. Probabilistic Data Structures: HyperLogLog & Locality-sensitive hashing (LSH)
+    3. Probabilistic Data Structures: Bloom Filter & HyperLogLog
+    4. Search
 8. Final Project Presentation
     1. Review Day
     2. Final Project Work Session      
@@ -83,5 +83,14 @@ see detailed schedule [below](#detailed-schedule)_)
 |:--------:|:-------- |:---------- |:---------- |
 | Monday | [I ♥ Logs](4.1 - Message Brokers/README.md) | [Apache Kafka](4.1 - Message Brokers/lecture_kafka.ipynb) | [Drinking from the Firehose](4.1 - Message Brokers/lab.md) |
 | Tuesday  | [Intro to Parallelization](4.2 - Distributed Systems/README.md) | [Distributed Computing](4.2 - Distributed Systems/lecture_distrbuted_systems.ipynb) | [Embarrassingly Parallel](4.2 - Distributed Systems/lab.md) |
-| Thursday | [HDFS and MapReduce](4.3 - MapReduce Intro/README.md) | [MapReduce](4.3 - MapReduce Intro/lecture_map_reduce.ipynb) | [Scaling Out](4.3 - MapReduce Intro/lab.md) |
-| Friday   | [MapReduce Design Patterns](4.4 - MapReduce Design Patterns/README.md) | [Hadoop Ecosystem](4.4 - MapReduce Design Patterns/lecture_hadoop_ecosystem.ipynb) | [Meet MrJob](4.4 - MapReduce Design Patterns/lab.md) |
+| Thursday | [HDFS and MapReduce](4.3 - MapReduce Intro/README.md) | [MapReduce](4.3 - MapReduce Intro/lecture_map_reduce.ipynb) | _No New Lab Today_ |
+| Friday   | [MapReduce Design Patterns](4.4 - MapReduce Design Patterns/README.md) | [Hadoop Ecosystem](4.4 - MapReduce Design Patterns/lecture_hadoop_ecosystem.ipynb) | [Scaling Out](4.4 - MapReduce Design Patterns/lab.md) |
+
+### Week 5: Spark (What to add to your LinkedIn profile)
+
+| Day      | Readings | Lecture(s) | Assignment |
+|:--------:|:-------- |:---------- |:---------- |
+| Monday   | [Functional Programming](5.1 - Functional Programming/README.md) | Multiprocessing Use Cases | [Meet MrJob](5.1 - Functional Programming/lab.md)
+| Tuesday  | [Introduction to Spark](5.2 - Spark Overview/README.md) | [Apache Spark](5.2 - Spark Overview/lecture_spark_intro_rdd.ipynb) | [Spark on EMR](5.2 - Spark Overview/lab.md) |
+| Thursday | [Spark DataFrames](5.3 - Spark DataFrames/README.md) | [Spark 2.0](5.3 - Spark DataFrames/lecture_spak_dataframes.ipynb) | [DataFrames](5.3 - Spark DataFrames/lab.md) |
+| Friday   | [Advanced Spark](5.4 - Spark SQL/README.md) | [Spark SQL](5.4 - Spark SQL/lecture_spark_sql.ipynb) | [Spark SQL](5.4 - Spark SQL/lab.md)
