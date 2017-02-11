@@ -11,12 +11,12 @@ def reducer():
     current_hashtag = ''
     running_total = 0
     for line in sys.stdin:
-        for hashtag in line.strip().replace('(' , "").replace(")" , '').split('/t',1):
+        for hashtag in line.strip().split('/t', 1):
             try:
                 int(hashtag)
                 continue
             except ValueError:
-                if len(hashtag)>1:
+                if len(hashtag) > 1:
                     if running_total == 0:
                         current_hashtag = hashtag
                         running_total += 1
