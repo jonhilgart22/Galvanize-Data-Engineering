@@ -12,16 +12,16 @@ def reducer():
     top_hashtags = defaultdict(int)
     current_hashtag = ''
     for line in sys.stdin:
-        for hashtag_number in line.strip().split('\t'):
+        for hashtag_number in line.strip().split('/t'):
             try:
                 int(hashtag_number)  # this is the number
                 hashtag_number = int(hashtag_number)
                 top_hashtags[current_hashtag] += hashtag_number
-
             except ValueError:
                 if len(hashtag_number) > 1:
                     current_hashtag = hashtag_number
-    print(Counter(top_hashtags).most_common(10))
+    for hash_t, num in Counter(top_hashtags).most_common(20):
+        print("{}\t{}".format(hash_t, num))
 
 
 if __name__ == "__main__":
