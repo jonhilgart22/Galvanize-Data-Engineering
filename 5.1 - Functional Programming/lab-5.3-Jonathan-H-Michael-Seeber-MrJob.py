@@ -20,7 +20,7 @@ class MRMostUsedWord(MRJob):
                     if entity is not None and (entity['hashtags'] is not None
                                             or len(entity['hashtags']) != 0):
                         for hashtags in entity['hashtags']:
-                            yield(hashtags['text'].lower(), 1)
+                            yield(hashtags['text'].lower().encode('utf-8'), 1)
                     else:
                         pass
                 except KeyError:
@@ -42,7 +42,8 @@ class MRMostUsedWord(MRJob):
         top_hashtags = defaultdict(int)
         current_hashtag = ''
         for hashtag_number in list(word_count_pairs):
-            top_hashtags[hashtag_number[1]] += hashtag_number[0]
+            top_hashtags[hashtag_number[1].encode('utf-8')] += hashtag_number[0]
+        print(top_hashtags)
         for hash_t, num in Counter(top_hashtags).most_common(20):
             print("{}\t{}".format(hash_t, num))
 
