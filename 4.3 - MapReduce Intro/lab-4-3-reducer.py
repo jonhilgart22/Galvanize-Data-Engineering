@@ -21,7 +21,7 @@ def reducer():
                         current_hashtag = hashtag
                         running_total += 1
                     elif hashtag != current_hashtag:
-                        print(current_hashtag, running_total)
+                        print("{}\t{}".format(current_hashtag, running_total))
                         running_total = 0
                         current_hashtag = hashtag
                         running_total += 1
