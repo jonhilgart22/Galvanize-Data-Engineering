@@ -29,16 +29,16 @@ class MRMostUsedWord(MRJob):
                 continue
 
     def combiner_count_words(self, word, counts):
-        # sum the words we've seen so far
+        """sum the hashtags we've seen so far"""
         yield (word, sum(counts))
 
     def reducer_count_words(self, word, counts):
-        # send all (num_occurrences, word) pairs to the same reducer.
-        # num_occurrences is so we can easily use Python's max() function.
+        """send all (num_occurrences, word) pairs to the same reducer
+        with a null key"""
         yield None, (sum(counts), word)
 
     def reducer_find_top_hashtags(self, _, word_count_pairs):
-        # return the top ten hashtags from the word_count_pairs generator
+        """ return the top ten hashtags from the word_count_pairs generator"""
         top_hashtags = defaultdict(int)
         current_hashtag = ''
         for hashtag_number in list(word_count_pairs):
