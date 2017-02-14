@@ -33,12 +33,12 @@ see detailed schedule [below](#detailed-schedule)_)
     2. [Spark: Overview](5.2 - Spark Overview)
     3. [Spark: DataFrames & Datasets](5.3 - Spark DataFrames)
     4. [Spark SQL](5.4 - Spark SQL)
-6. NoSQL for Smarties
+6. [NoSQL for Smarties](#week-6-nosql-for-smarties)  
 (_N.B._ Monday's class moved to Wednesday on account of President's Day)
-    1. (Tuesday) Review Day
+    1. (Tuesday) [Final Project Proposals Due](6.1 - Proposals)
     2. (Wednesday) NoSQL: Redshift and Cassandra
-    3. Cassandra + Spark
-    4. MLlib: Overview & Collaborative Filtering
+    3. MLlib: Overview & Collaborative Filtering
+    4. MLlib, Latent Semantic Analysis
 7. Streaming (Everyone **has to have** real-time)
     1. Spark Streaming: Part 1
     2. Spark Streaming: Part 2
@@ -90,7 +90,7 @@ see detailed schedule [below](#detailed-schedule)_)
 
 | Day      | Readings | Lecture(s) | Assignment |
 |:--------:|:-------- |:---------- |:---------- |
-| Monday   | [Functional Programming](5.1 - Functional Programming/README.md) | Multiprocessing Use Cases | [Meet MrJob](5.1 - Functional Programming/lab.md)
+| Monday   | [Functional Programming](5.1 - Functional Programming/README.md) | [Multiprocessing Demonstration](5.1 - Functional Programming/multiprocessing_demonstration/Multiprocessing Demonstration.ipynb) | [Meet MrJob](5.1 - Functional Programming/lab.md)
 | Tuesday  | [Introduction to Spark](5.2 - Spark Overview/README.md) | [Apache Spark](5.2 - Spark Overview/lecture_spark_intro_rdd.ipynb) | [Spark on EMR](5.2 - Spark Overview/lab.md) |
 | Thursday | [Spark DataFrames](5.3 - Spark DataFrames/README.md) | [Spark 2.0](5.3 - Spark DataFrames/lecture_spak_dataframes.ipynb) | [DataFrames](5.3 - Spark DataFrames/lab.md) |
 | Friday   | [Advanced Spark](5.4 - Spark SQL/README.md) | [Spark SQL](5.4 - Spark SQL/lecture_spark_sql.ipynb) | [Spark SQL](5.4 - Spark SQL/lab.md)
