@@ -13,8 +13,10 @@ Once you've got it working, you may wish to look at the Deploying guide to [Subm
 
 Don't forget to test your code on a subset of your data first! You don't want to have to wait for it to chunk through over a 100 GiB of data only to find it didn't work.
 
+Save your results using one of the `saveAs...` actions. (Warning: Do **not** try to `collect` all of your results without `limit`ing it first.)
+
 Your deliverable for this lab is the python file you submit along with instructions on how to run it. Those instructions can either be in a comment block in your python file or in a separate README.
 
 Bonus:
-- Save your results as HTML in your static website.
+- Save your results as HTML in your static website. To do this, you will probably have to `collect` the data you want to publish and then render that as a web page and put that in S3 using `boto` the old fashioned way. Better yet, separate this into two jobs (two scripts), a `pyspark` job and a traditional `python` job to be run in series. 
 - Install `spark-submit` locally and use it to submit your job to a remote cluster.
