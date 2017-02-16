@@ -92,5 +92,5 @@ see detailed schedule [below](#detailed-schedule)_)
 |:--------:|:-------- |:---------- |:---------- |
 | Monday   | [Functional Programming](5.1 - Functional Programming/README.md) | [Multiprocessing Demonstration](5.1 - Functional Programming/multiprocessing_demonstration/Multiprocessing Demonstration.ipynb) | [Meet MrJob](5.1 - Functional Programming/lab.md)
 | Tuesday   | _none_ | Hadoop Review | _No New Lab Today_ |
-| Thursday  | [Introduction to Spark](5.3 - Spark Overview/README.md) | [Apache Spark](5.3 - Spark Overview/lecture_spark_intro_rdd.ipynb) | [Spark on EMR](5.3 - Spark Overview/lab.md) |
-| Friday    | [Spark 2](5.4 - Spark Submit/README.md) | [Spark](5.3 - Spark Overview/lecture_spark_intro_rdd.ipynb) _continued_ | [Spark Submit](5.4 - Spark Submit/lab.md) |
+| Thursday  | [Introduction to Spark](5.3 - Spark Overview/README.md) | "tech boom" 🚧 school closure | [Spark on EMR](5.3 - Spark Overview/lab.md) |
+| Friday    | [Spark 2](5.4 - Spark Submit/README.md) | [Apache Spark](5.4 - Spark Overview/lecture_spark_intro_rdd.ipynb)  | [Spark Submit](5.4 - Spark Submit/lab.md) |
