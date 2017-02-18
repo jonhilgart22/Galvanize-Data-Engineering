@@ -40,7 +40,6 @@ class MRMostUsedWord(MRJob):
     def reducer_find_top_hashtags(self, _, word_count_pairs):
         """ return the top ten hashtags from the word_count_pairs generator"""
         top_hashtags = defaultdict(int)
-        current_hashtag = ''
         for hashtag_number in list(word_count_pairs):
             top_hashtags[hashtag_number[1].encode('utf-8')] += hashtag_number[0]
         print(top_hashtags)
