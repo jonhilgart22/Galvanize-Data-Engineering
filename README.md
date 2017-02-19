@@ -94,3 +94,14 @@ see detailed schedule [below](#detailed-schedule)_)
 | Tuesday   | _none_ | Hadoop Review | _No New Lab Today_ |
 | Thursday  | [Introduction to Spark](5.3 - Spark Overview/README.md) | "tech boom" 🚧 school closure | [Spark on EMR](5.3 - Spark Overview/lab.md) |
 | Friday    | [Spark 2](5.4 - Spark Submit/README.md) | [Apache Spark](5.4 - Spark Submit/lecture_spark_intro_rdd.ipynb)  | [Spark Submit](5.4 - Spark Submit/lab.md) |
+
+### Week 6: More Spark
+
+| Day      | Readings | Notes      | Assignment |
+|:--------:|:-------- |:----------:|:---------- |
+|~~Monday~~| *President's Day* | **NO CLASS** |
+| Tuesday  | [Designing Big Data Systems](6.1 - Proposals/README.md) | [Review](6.1 - Proposals/review_questions_and_answers.ipynb) | [Final Project Proposal](6.1 - Proposals/lab.md) | 
+|**Wednesday**| [Spark DataFrames](6.2 - Spark DataFrames/README.md) | [Spark 2.0](6.2 - Spark DataFrames/lecture_spak_dataframes.ipynb) | [DataFrames](6.2 - Spark DataFrames/lab.md) |
+| Thursday | [Programming with Resilient Distributed](6.3 - Spark SQL/README.md) | [Spark SQL](6.3 - Spark SQL/lecture_spark_sql.ipynb) | [Spark SQL](6.3 - Spark SQL/lab.md) |
+| Friday   | [Everyday I'm Shuffling](6.4 - Advanced Spark/README.md) | Spark Review | _No New Lab Today_ |
+ 
