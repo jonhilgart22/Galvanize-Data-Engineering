@@ -10,6 +10,7 @@ from collections import defaultdict
 import yaml
 import os
 import argparse
+from bart_station_list import bart_stations_dict
 __author__ = 'Jonathan Hilgart'
 # credentials #http://www.blog.pythonlibrary.org/2010/11/20/python-parsing-xml-with-lxml/
 credentials = yaml.load(open(os.path.expanduser('~/data_engineering_final_credentials.yml')))
@@ -40,9 +41,8 @@ payload = {'cmd': 'etd', 'orig': origin_station_arg,'dir':direction_arg,'key':ba
 r = requests.get('http://api.bart.gov/api/etd.aspx',
 params=payload)
 content = r.content
-file = open('final_project_data.txt','wr')
-file.write(content)
-file.close()
+print(content,'content')
+
 ##parse the XML returned by the BART api
 tree = etree.parse(StringIO(content))
 context = etree.iterparse(StringIO(content))

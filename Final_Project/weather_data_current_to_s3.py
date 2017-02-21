@@ -1,4 +1,4 @@
-#! usr/bin/end python
+#! usr/bin/endvpython
 __author__='Jonathan Hilgart'
 import requests
 import yaml
