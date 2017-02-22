@@ -21,14 +21,15 @@ to handle the load.
 stored in s3 can be used for additional data science questions.
 
 # Extensibility
-
+- This system can be used across any Ec2 instance. In addition, a vagrant file
+can be used to keep the configuration ready to spin up another server.
 
 # Ad hoc queries
 - With all of the data being stored in Postgres, a user can write custom queries
 to ask different questions of historical data than is being asked currently
 
 # Minimal Maintenance
-
+- With airflow, emails can be sent in case of errors in completing tasks.
 
 # Debuggability
 - data structures will be immutable in this system. Therefore, it will be easier
