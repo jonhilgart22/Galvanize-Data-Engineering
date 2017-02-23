@@ -103,5 +103,6 @@ see detailed schedule [below](#detailed-schedule)_)
 | Tuesday  | [Designing Big Data Systems](6.1 - Proposals/README.md) | [Review](6.1 - Proposals/review_questions_and_answers.ipynb) | [Final Project Proposal](6.1 - Proposals/lab.md) | 
 |**Wednesday**| [Spark DataFrames](6.2 - Spark DataFrames/README.md) | [Spark 2.0](6.2 - Spark DataFrames/lecture_spak_dataframes.ipynb) | [DataFrames](6.2 - Spark DataFrames/lab.md) |
 | Thursday | [Programming with Resilient Distributed](6.3 - Spark SQL/README.md) | [Spark SQL](6.3 - Spark SQL/lecture_spark_sql.ipynb) | [Spark SQL](6.3 - Spark SQL/lab.md) |
-| Friday   | [Everyday I'm Shuffling](6.4 - Advanced Spark/README.md) | Spark Review | _No New Lab Today_ |
+| Friday   | [Everyday I'm Shuffling](6.4 - Advanced Spark/README.md) | Spark Review | [Project Milestone](6.4 - Advanced Spark/lab.md) |
  
+### Week 7: Streaming (Everyone **has to have** real-time)
