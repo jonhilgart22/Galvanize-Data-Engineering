@@ -65,7 +65,7 @@ def bart_xml_parser():
                 if elem.tag == 'name':
                     origin_station = text
                 elif elem.tag == 'destination':
-                    destination_station = text
+                    current_destination= text
                     destination_minutes[destination_station] = []
                     destination_train_size[destination_station] = []
                 elif elem.tag == 'minutes':
