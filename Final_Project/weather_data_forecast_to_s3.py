@@ -11,7 +11,8 @@ import time
 
 def weather_data_forecast_to_s3():
     """This function returns a forecast of the weather in SF for 14 days.
-    Note - the dt parameter is the time of the forecast in Unix epoch time."""
+    Note - the dt parameter is the time of the forecast in Unix epoch time.
+    Run once a day."""
     client = boto3.client('s3')
     credentials = yaml.load(open(os.path.expanduser(
         '~/data_engineering_final_credentials.yml')))

@@ -11,9 +11,9 @@ from pyspark.sql.functions import split, explode
 spark_session = SparkSession     .builder     .appName("Python Spark SQL basic example")     .config("spark.some.config.option", "some-value")     .getOrCreate()
 
 
-# In[6]:
+# In[87]:
 
-dataframe_spark = spark_session.read.json("s3a://twitter-streaming02062017/twitter2017/02/23/02/twitter-streaming-data-1-2017-02-23-02-00-14-8fd5961f-e8fa-4ca5-aa5f-bc35c7e4ac2d")
+dataframe_spark = spark_session.read.json("s3a://twitter-streaming02062017/twitter2017/02/23/02/*")
 
 
 # In[7]:
@@ -21,40 +21,45 @@ dataframe_spark = spark_session.read.json("s3a://twitter-streaming02062017/twitt
 dataframe_spark.printSchema()
 
 
-# In[21]:
+# In[88]:
 
-dataframe_spark.selectExpr('id as tweet_id', 'timestamp_ms', 'user.id AS user_id', 'text').show()
+tweets_dataframe = dataframe_spark.selectExpr('id as tweet_id', 'timestamp_ms', 'user.id AS user_id', 'text')
 
 
-# In[58]:
+# In[89]:
 
 user_dataframe = dataframe_spark.selectExpr('user.id','user.name').distinct()
 user_dataframe.show()
 
 
-# In[50]:
+# In[90]:
 
-tweet_dataframe = dataframe_spark.selectExpr('entities.hashtags.text as hashtags', 'id as tweet_id')
-tweet_dataframe.show()
-
-
-# In[62]:
-
-exploded_tweet_dataframe = tweet_dataframe.select(tweet_dataframe['tweet_id'],explode(tweet_dataframe.hashtags).alias("hashtags"))
-exploded_tweet_dataframe.show()
+hashtags_dataframe = dataframe_spark.selectExpr('entities.hashtags.text as hashtags', 'id as tweet_id')
+hashtags_dataframe.show()
 
 
-# In[66]:
+# In[91]:
+
+exploded_hashtags_dataframe = hashtags_dataframe.select(hashtags_dataframe['tweet_id'],explode(hashtags_dataframe.hashtags).alias("hashtags"))
+exploded_hashtags_dataframe.show()
+
+
+# In[92]:
 
 #write parquet
-exploded_tweet_dataframe.write.parquet("s3a://twitter-streaming02062017/parquet_files/exploded_tweet_dataframe.parquet")
+tweets_dataframe.write.parquet("s3a://twitter-streaming02062017/parquet_files/tweets_dataframe.parquet")
 
 
-# In[65]:
+# In[93]:
 
 #Parquet
-tweet_dataframe.write.parquet("s3a://twitter-streaming02062017/parquet_files/tweet_dataframe.parquet")
+hashtags_dataframe.write.parquet("s3a://twitter-streaming02062017/parquet_files/hashtags_dataframe.parquet")
 user_dataframe.write.parquet("s3a://twitter-streaming02062017/parquet_files/user_dataframe.parquet")
+
+
+# In[94]:
+
+exploded_hashtags_dataframe.groupby(exploded_hashtags_dataframe['hashtags']).count().show()
 
 
 # In[ ]:

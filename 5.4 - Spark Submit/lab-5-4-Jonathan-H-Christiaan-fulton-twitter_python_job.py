@@ -29,7 +29,7 @@ def map_hashtag_to_num(x):
             else:
                 pass
         except (KeyError, TypeError):
-            pass
+
     except ValueError:
         pass
 
