@@ -40,11 +40,11 @@ see detailed schedule [below](#detailed-schedule)_)
     3. [Spark SQL](6.3 - Spark SQL)
     4. [Advanced Spark](6.4 - Advanced Spark)
 7. [Streaming (Everyone **has to have** real-time)](#week-7-streaming-everyone-has-to-have-real-time)
-    1. MLlib: Overview & Collaborative Filtering
-    2. Spark Streaming
-    3. Probabilistic Data Structures: Bloom Filter & HyperLogLog
-    2. Spark Streaming Review
-8. Final Project Presentation
+    1. [MLlib](7.1 - MLlib)
+    2. [Spark Streaming](7.2 - Spark Streaming)
+    3. [Structured Streaming](7.3 - Structured Streaming)
+    4. [Probabilistic Data Structures](7.4 - Probabilistic Data Structures)
+8. [Final Project Presentations](#week-8-final-project-presentations)
     1. Review Day
     2. Final Project Work Session      
     3. Project Presentations: Day 1    
@@ -106,3 +106,10 @@ see detailed schedule [below](#detailed-schedule)_)
 | Friday   | [Everyday I'm Shuffling](6.4 - Advanced Spark/README.md) | Spark Review | [Project Milestone](6.4 - Advanced Spark/lab.md) |
  
 ### Week 7: Streaming (Everyone **has to have** real-time)
+
+| Day      | Readings | Notes      | Assignment |
+|:--------:|:-------- |:---------- |:---------- |
+| Monday   | [Introduction to Machine Learning in Spark](7.1 - MLlib/README.md) | [MLlib Overview](7.1 - MLlib/lecture_spark_mllib_overview.ipynb) | [Movie Recommendation with MLlib](7.1 - MLlib/lab.ipynb) |
+| Tuesday  | [Spark Streaming](7.2 - Spark Streaming/README.md) | [Why Streaming?](7.2 - Spark Streaming/lecture_spark_streaming_intro.ipynb) | [A Quick Example](7.2 - Spark Streaming/lab.md) |
+| Thursday | [Structured Streaming](7.3 - Structured Streaming/README.md) | [Spark Streaming](7.3 - Structured Streaming/lecture_spark_streaming_day2.ipynb) | [A new high-level API for streaming](7.3 - Structured Streaming/lab.md) |
+| Friday   | [It Provably Works, Probabilistically](7.4 - Probabilistic Data Structures/README.md) | 1. [Bloom Filter & Count–min sketch](7.4 - Probabilistic Data Structures/lecture_pds_bloom_filter_count_min_sketch.ipynb) <BR /> 2. [HyperLogLog & Locality-sensitive hashing (LSH)](7.4 - Probabilistic Data Structures/lecture_pds_lsh_hyperloglog.ipynb) | [HyperLogLog](7.4 - Probabilistic Data Structures/lab.md) |
