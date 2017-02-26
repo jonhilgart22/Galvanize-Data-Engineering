@@ -20,7 +20,6 @@ def bart_real_time_departures_to_s3():
      a later date. ~92 station combinations total"""
     client = boto3.client('firehose', region_name='us-east-1')
     direction_options = ['n', 's']
-    all_bart_stations = ''
     for name, station_abr in bart_stations_dict.iteritems():  # every station
         for direction in direction_options:
             credentials = yaml.load(open(os.path.expanduser(
@@ -32,15 +31,13 @@ def bart_real_time_departures_to_s3():
             payload = {'cmd': 'etd', 'orig': origin_station_arg,
                        'dir': direction_arg, 'key': bart_key}
             r = requests.get('http://api.bart.gov/api/etd.aspx',
-                params=payload)
+                    params = payload)
             content = r.content
-            json_content = json.dumps(xmltodict.parse(content)) ## convert xml to json
-            json_content = str(json.loads(json_content)['root'])+"\n"
-            all_bart_stations+=json_content
-
-    client.put_record(
-                DeliveryStreamName='bart-data-collection',
-                       Record={'Data': all_bart_stations})
+            content = json.dumps(xmltodict.parse(content))
+            print(json.loads(content)['root']['station']['etd'],'----')
+            # client.put_record(
+            #             DeliveryStreamName='bart-data-collection',
+            #                    Record={'Data': content + "\n"})
 
 
 if __name__ == '__main__':

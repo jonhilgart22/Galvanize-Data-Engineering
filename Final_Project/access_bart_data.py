@@ -11,124 +11,121 @@ import yaml
 import os
 import argparse
 from bart_station_list import bart_stations_dict
+import time
+import datetime
+import boto3
 __author__ = 'Jonathan Hilgart'
-# credentials #http://www.blog.pythonlibrary.org/2010/11/20/python-parsing-xml-with-lxml/
-credentials = yaml.load(open(os.path.expanduser('~/data_engineering_final_credentials.yml')))
-## Get the current time in San Francisco
-SF_time = pytz.timezone('US/Pacific')
-current_sf_time = datetime.datetime.now(SF_time)
-date_sf , raw_time_sf= time.strftime('{}'.format(current_sf_time)).split(' ')
-sf_hour,sf_minute = int(raw_time_sf[:2]), int(raw_time_sf[3:5])
 
-if len(str(sf_minute))==1: ## need to add a zero
-    sf_time_tens = int(0)
-    sf_minute=  sf_minute
-    print('{}:{}{}'.format(sf_hour,sf_time_tens,sf_minute),'Current SF time')
-else:
-    print('{}:{}'.format(sf_hour,sf_minute),'Current SF TIme')
-## Access the bart api
-bart_key = credentials['bart'].get('key')
-##create a parser object to allow variables to be submitted from the terminal
-parser = argparse.ArgumentParser(description='Inputs for bart train.')
-parser.add_argument('origin_station')
-parser.add_argument('direction')
-bart_args = vars(parser.parse_args())
-origin_station_arg = bart_args['origin_station']
-direction_arg = bart_args['direction']
-# add in the terminal arguments to the payload for the bart api
-payload = {'cmd': 'etd', 'orig': origin_station_arg,'dir':direction_arg,'key':bart_key}
-#http://api.bart.gov/api/etd.aspx?cmd=etd&orig=12th&key=MW9S-E7SL-26DU-VV8V
-r = requests.get('http://api.bart.gov/api/etd.aspx',
-params=payload)
-content = r.content
-print(content,'content')
 
-##parse the XML returned by the BART api
-tree = etree.parse(StringIO(content))
-context = etree.iterparse(StringIO(content))
-def bart_xml_parser(xml_context):
-    """Parse the xml for the bart api. Return two pandas dataframes.
-    One that shows the arrival time (minutes) fora  destination station.
-    The second that sows the number of train cars for a destination.
+def bart_xml_parser():
+    """Parse the xml for the bart api. Return one pandas dataframes. This
+    dateframe will be split per train direction for every car and time.
     If there are not three time projections for a given train a default estimate of 90 minutes is given."""
-    destination_station=''
-    destination_minutes =defaultdict(int)
-    destination_train_size=defaultdict(int)
-    for action, elem in context: ## go through the xml returned
-        if not elem.text:
-            text = "None"
-        else:
-            text = elem.text
-        if elem.tag =='name':
-            origin_station=text
-        elif elem.tag =='destination':
-            destination_station=text
-            destination_minutes[destination_station]=[]
-            destination_train_size[destination_station]=[]
-        elif elem.tag =='minutes':
-            if text =='Leaving': ## This train is leaving now!
-                destination_minutes[destination_station].append(0)
-            else:
-                destination_minutes[destination_station].append(int(text))
-        elif elem.tag =='length':
-            destination_train_size[destination_station].append(int(text))
-    for k,v in destination_minutes.iteritems(): # check if there are not the same number of trains coming
-        if len(v)<3:
-            [destination_minutes[k].append(90) for _ in range(3-len(v))]
-    for k,v in destination_train_size.iteritems(): # check if there are not the same number of trains coming
-        if len(v)<3:
-            [destination_train_size[k].append(v[0]) for _ in range(3-len(v))]
-    destination_minutes_df = pd.DataFrame(destination_minutes)
-    destination_train_size_df = pd.DataFrame(destination_train_size)
-    print(destination_minutes_df , 'destination minutes df')
-    print(destination_train_size_df,'train size df')
-bart_xml_parser(context)
+    # http://www.blog.pythonlibrary.org/2010/11/20/python-parsing-xml-with-lxml/
+    credentials = yaml.load(open(os.path.expanduser(
+        '~/data_engineering_final_credentials.yml')))
+    # add in the terminal arguments to the payload for the bart api
+    client = boto3.client('firehose', region_name='us-east-1')
+    direction_options = ['n', 's']
+    for name, station_abr in bart_stations_dict.iteritems():  # every station
+        for direction in direction_options:
+            bart_key = credentials['bart'].get('key')
+            payload = {'cmd': 'etd', 'orig': station_abr,
+                       'dir': direction, 'key': bart_key}
+            # http://api.bart.gov/api/etd.aspx?cmd=etd&orig=12th&key=MW9S-E7SL-26DU-VV8V
+            r = requests.get('http://api.bart.gov/api/etd.aspx',
+                params = payload)
+            content = r.content
+            # parse the XML returned by the BART api
+            tree = etree.parse(StringIO(content))
+            context = etree.iterparse(StringIO(content))
+            destination_station = ''
+            destination_minutes = defaultdict(list)
+            destination_train_size = defaultdict(list)
+            train_size = defaultdict(list)
+            minutes = defaultdict(list)
+            direction = defaultdict(list)
+            destination = defaultdict(list)
+            bike_flag = defaultdict(list)
+            color = defaultdict(list)
+            bart_origination_station = defaultdict(list)
+            origin_station = ''
+            current_destination = ''
+            current_time = ''
+            current_date = ''
+            date = defaultdict(list)
+            time_current = defaultdict(list)
+            unix_time = defaultdict(list)
+            timestamp_unix = datetime.datetime.utcfromtimestamp(time.time())
+            for action, elem in context:  # go through the xml returned
+                if not elem.text:
+                    text = "None"
+                else:
+                    text = elem.text
+                if elem.tag == 'name':
+                    origin_station = text
+                elif elem.tag == 'destination':
+                    destination_station = text
+                    destination_minutes[destination_station] = []
+                    destination_train_size[destination_station] = []
+                elif elem.tag == 'minutes':
+                    if text == 'Leaving':  # This train is leaving now!
+                        destination_minutes[destination_station].append(0)
+                        minutes['minutes'].append(0)
+                    else:
+                        destination_minutes[destination_station].append(
+                            int(text))
+                        minutes['minutes'].append(int(text))
+                elif elem.tag == 'length':
+                    destination_train_size[destination_station].append(
+                        int(text))
+                    train_size['train_size'].append(int(text))
+                    destination['destination'].append(current_destination)
+                    date['date'].append(current_date)
+                    time_current['time'].append(current_time)
+                    unix_time['unix_time'].append(timestamp_unix)
+                    bart_origination_station['origin_station'].append(
+                        origin_station)
+                elif elem.tag == 'direction':
+                    direction['direction'].append(text)
+                elif elem.tag == 'destination':
+                    current_destination = text
+                elif elem.tag == 'bikeflag':
+                    bike_flag['bike_flag'].append(text)
+                elif elem.tag == 'color':
+                    color['color'].append(text)
+                elif elem.tag =='date':
+                    current_date = text
+                elif elem.tag == 'time':
+                    current_time = text
+            for k, v in destination_minutes.iteritems():
+                # check if there are not the same number of trains coming
+                if len(v) < 3:
+                    [destination_minutes[k].append(90)
+                     for _ in range(3-len(v))]
+            for k, v in destination_train_size.iteritems():
+                # check if there are not the same number of trains coming
+                if len(v) < 3:
+                    [destination_train_size[k].append(v[0]) for _ in range(3-len(v))]
+            destination_minutes_df = pd.DataFrame(destination_minutes)
+            destination_train_size_df = pd.DataFrame(destination_train_size)
+            origin_location_df = pd.DataFrame(bart_origination_station)
+            train_size_df = pd.DataFrame(train_size)
+            minutes_df = pd.DataFrame(minutes)
+            direction_df = pd.DataFrame(direction)
+            destination_df = pd.DataFrame(destination)
+            bike_df = pd.DataFrame(bike_flag)
+            color_df = pd.DataFrame(color)
+            time_df = pd.DataFrame(time_current)
+            date_df = pd.DataFrame(date)
+            unix_time_df = pd.DataFrame(unix_time)
+            final_df = pd.concat([train_size_df, minutes_df, direction_df,
+                             destination_df,bike_df, color_df, time_df, date_df,
+                             unix_time_df, origin_location_df],
+                            join='outer',axis=1)
+            client.put_record(
+                         DeliveryStreamName='bart-data-collection',
+                                Record = {'Data': final_df.to_json() + "\n"})
 
-
-##stations
-# 12th	12th St. Oakland City Center
-# 16th	16th St. Mission (SF)
-# 19th	19th St. Oakland
-# 24th	24th St. Mission (SF)
-# ashb	Ashby (Berkeley)
-# balb	Balboa Park (SF)
-# bayf	Bay Fair (San Leandro)
-# cast	Castro Valley
-# civc	Civic Center (SF)
-# cols	Coliseum
-# colm	Colma
-# conc	Concord
-# daly	Daly City
-# dbrk	Downtown Berkeley
-# dubl	Dublin/Pleasanton
-# deln	El Cerrito del Norte
-# plza	El Cerrito Plaza
-# embr	Embarcadero (SF)
-# frmt	Fremont
-# ftvl	Fruitvale (Oakland)
-# glen	Glen Park (SF)
-# hayw	Hayward
-# lafy	Lafayette
-# lake	Lake Merritt (Oakland)
-# mcar	MacArthur (Oakland)
-# mlbr	Millbrae
-# mont	Montgomery St. (SF)
-# nbrk	North Berkeley
-# ncon	North Concord/Martinez
-# oakl	Oakland Int'l Airport
-# orin	Orinda
-# pitt	Pittsburg/Bay Point
-# phil	Pleasant Hill
-# powl	Powell St. (SF)
-# rich	Richmond
-# rock	Rockridge (Oakland)
-# sbrn	San Bruno
-# sfia	San Francisco Int'l Airport
-# sanl	San Leandro
-# shay	South Hayward
-# ssan	South San Francisco
-# ucty	Union City
-# warm	Warm Springs/South Fremont
-# wcrk	Walnut Creek
-# wdub	West Dublin
-# woak	West Oakland
+if __name__ == "__main__":
+    bart_xml_parser()
