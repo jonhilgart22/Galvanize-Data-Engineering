@@ -14,13 +14,15 @@ from bart_station_list import bart_stations_dict
 import time
 import datetime
 import boto3
+import numpy as np
 __author__ = 'Jonathan Hilgart'
 
 
 def bart_xml_parser():
     """Parse the xml for the bart api. Return one pandas dataframes. This
     dateframe will be split per train direction for every car and time.
-    If there are not three time projections for a given train a default estimate of 90 minutes is given."""
+    If there are not three time projections for a given train a
+    default estimate of 90 minutes is given."""
     # http://www.blog.pythonlibrary.org/2010/11/20/python-parsing-xml-with-lxml/
     credentials = yaml.load(open(os.path.expanduser(
         '~/data_engineering_final_credentials.yml')))
@@ -123,6 +125,25 @@ def bart_xml_parser():
                              destination_df,bike_df, color_df, time_df, date_df,
                              unix_time_df, origin_location_df],
                             join='outer',axis=1)
+            # calculate number of people and time or arrival
+            final_df['arrival_time'] = np.nan
+            final_df['capacity'] = np.nan
+            final_df['minutes_til_arrival'] = np.nan
+
+            final_df['minutes_til_arrival'] =  \
+            final_df['minutes'].apply(lambda x:
+                                              pd.Timedelta(x,unit='m'))
+            # Find when bart will arrive in SF time
+            arrival_data_bart_one = []
+            for idx, row in enumerate(final_df['time']):
+                arrival_data_bart_one.append(
+                    row+final_df['minutes_til_arrival'][idx])
+            final_df['arrival_time']=arrival_data_bart_one
+            print(type(final_df['arrival_time'][0]))
+            # calculate capacity
+            final_df['capacity'] = final_df['train_size']*200
+            # push to kinesis
+            print(final_df)
             client.put_record(
                          DeliveryStreamName='bart-data-collection',
                                 Record = {'Data': final_df.to_json() + "\n"})

@@ -19,7 +19,7 @@ def weather_data_to_s3():
     r = requests.get('http://api.openweathermap.org/data/2.5/weather',
         params=payload)
     content = str(r.content)
-    # send content to S3 every minute
+    # send content to S3 every 5 minutels
     client.put_record(
                 DeliveryStreamName='current-sf-weather',
                 Record={'Data': content+"\n"})
