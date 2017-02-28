@@ -38,6 +38,7 @@ def bart_xml_parser():
             r = requests.get('http://api.bart.gov/api/etd.aspx',
                 params = payload)
             content = r.content
+
             # parse the XML returned by the BART api
             tree = etree.parse(StringIO(content))
             context = etree.iterparse(StringIO(content))
@@ -58,7 +59,7 @@ def bart_xml_parser():
             date = defaultdict(list)
             time_current = defaultdict(list)
             unix_time = defaultdict(list)
-            timestamp_unix = datetime.datetime.utcfromtimestamp(time.time())
+            timestamp_unix = int(time.time())
             for action, elem in context:  # go through the xml returned
                 if not elem.text:
                     text = "None"
@@ -127,26 +128,28 @@ def bart_xml_parser():
                             join='outer',axis=1)
             # calculate number of people and time or arrival
             final_df['arrival_time'] = np.nan
+            # assume each bart train can hold 200 people
+            # http://www.bart.gov/about/history/cars
             final_df['capacity'] = np.nan
             final_df['minutes_til_arrival'] = np.nan
-
-            final_df['minutes_til_arrival'] =  \
-            final_df['minutes'].apply(lambda x:
-                                              pd.Timedelta(x,unit='m'))
+            try:
+                final_df['minutes_til_arrival'] =  \
+                    final_df['minutes'].apply(lambda x:
+                                                  pd.Timedelta(x,unit='m'))
+            except KeyError:  ## there is not train arriving
+                continue
             # Find when bart will arrive in SF time
             arrival_data_bart_one = []
             for idx, row in enumerate(final_df['time']):
                 arrival_data_bart_one.append(
                     row+final_df['minutes_til_arrival'][idx])
-            final_df['arrival_time']=arrival_data_bart_one
-            print(type(final_df['arrival_time'][0]))
+            final_df['arrival_time'] = arrival_data_bart_one
             # calculate capacity
             final_df['capacity'] = final_df['train_size']*200
             # push to kinesis
-            print(final_df)
             client.put_record(
                          DeliveryStreamName='bart-data-collection',
-                                Record = {'Data': final_df.to_json() + "\n"})
+                                Record={'Data': final_df.to_json() + "\n"})
 
 if __name__ == "__main__":
     bart_xml_parser()
