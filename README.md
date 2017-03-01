@@ -45,8 +45,8 @@ see detailed schedule [below](#detailed-schedule)_)
     3. [Structured Streaming](7.3 - Structured Streaming)
     4. [Probabilistic Data Structures](7.4 - Probabilistic Data Structures)
 8. [Final Project Presentations](#week-8-final-project-presentations)
-    1. Review Day
-    2. Final Project Work Session      
+    1. [Review Day](8.1 - Review)
+    2. [Final Project Work Session](8.2 - Final Project)
     3. Project Presentations: Day 1    
     4. Project Presentations: Day 2     
 
@@ -113,3 +113,10 @@ see detailed schedule [below](#detailed-schedule)_)
 | Tuesday  | [Spark Streaming](7.2 - Spark Streaming/README.md) | [Why Streaming?](7.2 - Spark Streaming/lecture_spark_streaming_intro.ipynb) | [A Quick Example](7.2 - Spark Streaming/lab.md) |
 | Thursday | [Structured Streaming](7.3 - Structured Streaming/README.md) | [Spark Streaming](7.3 - Structured Streaming/lecture_spark_streaming_day2.ipynb) | [A new high-level API for streaming](7.3 - Structured Streaming/lab.md) |
 | Friday   | [It Provably Works, Probabilistically](7.4 - Probabilistic Data Structures/README.md) | 1. [Bloom Filter & Count–min sketch](7.4 - Probabilistic Data Structures/lecture_pds_bloom_filter_count_min_sketch.ipynb) <BR /> 2. [HyperLogLog & Locality-sensitive hashing (LSH)](7.4 - Probabilistic Data Structures/lecture_pds_lsh_hyperloglog.ipynb) | [HyperLogLog](7.4 - Probabilistic Data Structures/lab.md) |
+
+### Week 8: Final Project Presentations
+
+| Day      | Readings | Notes      | Assignment |
+|:--------:|:-------- |:---------- |:---------- |
+| Monday   | _none_   | [Data Engineering Wrapup](8.1 - Review/lecture_future_of_data_engineering.ipynb) | _none_ |
+| Tuesday  | [Final Project Prompts](8.2 - Final Project/final_project_design_prompts.md) | [Data Engineering Final Project](8.2 - Final Project/final_project_guidelines.md) | [Final Project Challenge Questions](8.2 - Final Project/final_project_challenge_questions.md) |
