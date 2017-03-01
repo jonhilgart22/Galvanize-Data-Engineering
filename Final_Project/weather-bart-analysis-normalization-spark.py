@@ -67,17 +67,17 @@ wind_df = weather_df .select(
 location_df = weather_df .select(
     hour(from_unixtime("dt")).alias('hour'),
     date_format(from_unixtime('dt'), 'MM/dd/yyy').alias('date'), "name")
-weather_description_df.write.save(
+weather_description_df.write.parquet(
     "s3a://normalized-data-weather-bart/weather-description{}".format(
-        KeyFileName), format="csv")
+        KeyFileName))
 # save the weather data
-main_temp_df.write.save(
+main_temp_df.write.parquet(
     "s3a://normalized-data-weather-bart/main-temp{}".format(KeyFileName),
     format="csv")
-wind_df.write.save("s3a://normalized-data-weather-bart/wind_df{}".format(
-    KeyFileName), format="csv")
-location_df.write.save("s3a://normalized-data-weather-bart/location{}".format(
-    KeyFileName), format="csv")
+wind_df.write.parquet("s3a://normalized-data-weather-bart/wind_df{}".format(
+    KeyFileName))
+location_df.write.parquet("s3a://normalized-data-weather-bart/location{}".format(
+    KeyFileName))
 # onto bart data
 bart_path = "s3a://bart-data-collection/{}/{}/{}/*/*".format(sf_year,
                                                              sf_month, sf_day)
@@ -140,21 +140,21 @@ bart_physical_2 = bart_df.select(
     col("train_size.2").alias("train_size_2"),
     col("capacity.2").alias("capacity_2"))
 # write to csv for bart data
-bart_arrival_0.write.save(
+bart_arrival_0.write.parquet(
     "s3a://normalized-data-weather-bart/bart_arrival_0_{}".format(
-        KeyFileName), format="csv")
-bart_arrival_1.write.save(
+        KeyFileName))
+bart_arrival_1.write.parquet(
     "s3a://normalized-data-weather-bart/bart_arrival_1_{}".format(
-        KeyFileName), format="csv")
-bart_arrival_2.write.save(
+        KeyFileName))
+bart_arrival_2.write.parquet(
     "s3a://normalized-data-weather-bart/bart_arrival_2_{}".format(
-        KeyFileName), format="csv")
-bart_physical_0.write.save(
+        KeyFileName))
+bart_physical_0.write.parquet(
     "s3a://normalized-data-weather-bart/bart_physical_0_{}".format(
-        KeyFileName), format="csv")
-bart_physical_1.write.save(
+        KeyFileName))
+bart_physical_1.write.parquet(
     "s3a://normalized-data-weather-bart/bart_physical_1_{}".format(
-        KeyFileName), format="csv")
-bart_physical_2.write.save(
+        KeyFileName))
+bart_physical_2.write.parquet(
     "s3a://normalized-data-weather-bart/bart_physical_2_{}".format(
-        KeyFileName), format="csv")
+        KeyFileName))
