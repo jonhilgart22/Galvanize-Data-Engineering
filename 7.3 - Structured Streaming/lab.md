@@ -1,6 +1,17 @@
-A new high-level API for streaming
------
+# A Live View into our Firehose
 
-Look at the source code for the [`structured_network_wordcount_windowed`](https://github.com/apache/spark/blob/v2.1.0/examples/src/main/python/sql/streaming/structured_network_wordcount_windowed.py) example and get it running on your Spark cluster.
+In the last lab, we looked at Spark Streaming using a simple tutorial that allowed us to count words entered into Netcat, a utility that writes data across network connections.  Netcat simulated streaming data from an API.  In the wild, we would want to point Kinesis, Kafka, Twitter, or other data sources to a Spark **receiver** that takes data and turns it into a **DStream** or Discretized Stream.
 
-Then take a look back at the [Structured Streaming In Apache Spark](https://databricks.com/blog/2016/07/28/structured-streaming-in-apache-spark.html) blog post you read before class. Notice how you can stream data from an S3 bucket. Can you see how this could be useful with Kinesis Firehose (_i.e._ without having to develop a separate Kinesis stream consumer)? Time permitting (_i.e._ this is optional) adapt this to the S3 bucket where Kinesis Firehose is streaming data and use it to count distinct users for a given day.
+Today, we will be expanding upon this lab in a still somewhat contrived way.  Instead of using Netcat, we'll be running a script that will handle our connection and write tweets to our socket.  This is more similar to what we'll see in the wild.  Like yesterday, run this in a different window from your `spark-submit` script.  Today, instead of a simple word count, we'll be counting our hashtags in real time.
+
+The script to simulate a data stream is available in `twitter_stream.py`.  Read through it and modify it to use your twitter credentials.  There have been some challenges running `pip` with `sudo` so when installing dependencies you might consider running:
+
+        sudo `which pip` install <package>
+
+Change your word count script to return hashtag counts and to run your job every 10 seconds.  Note that actions like `top` might not work on transformed DStreams.
+
+Your deliverables for this lab are the code you used to run your `spark-submit` job as well as screen captures of both EMR terminal windows.
+
+## Extra Credit
+
+Use either stateful or window transformations to deliver a running total of hashtags.
