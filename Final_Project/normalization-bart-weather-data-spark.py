@@ -72,8 +72,7 @@ weather_description_df.write.parquet(
         KeyFileName))
 # save the weather data
 main_temp_df.write.parquet(
-    "s3a://normalized-data-weather-bart/main-temp{}".format(KeyFileName),
-    format="csv")
+    "s3a://normalized-data-weather-bart/main-temp{}".format(KeyFileName))
 wind_df.write.parquet("s3a://normalized-data-weather-bart/wind_df{}".format(
     KeyFileName))
 location_df.write.parquet("s3a://normalized-data-weather-bart/location{}".format(

@@ -16,17 +16,15 @@ default_args = {
         'retry_delay': timedelta(minutes=5),
       }
 
-dag = DAG('normalize_bart_weather_data', default_args=default_args,
-          schedule_interval='0 2 * * *') # run at 2 am
+dag = DAG('weather-bart_data_s3', default_args=default_args, schedule_interval=timedelta(seconds=300))
 # run every 5 mins
 t1 = BashOperator(
-    task_id='normalize_data',
-    bash_command='python ~/./normalization_bart_weather.py',
+    task_id='weather_current_to_s3',
+    bash_command='python ~/./weather_data_current_to_s3.py',
     retries=3,
     dag=dag)
-
-t2 = BashOperator(
-    task_id='delete_logs',
-    bash_command='rm -rf ~/airflow/logs/*',
+t2= BashOperator(
+    task_id='bart_data_to_s3',
+    bash_command='python ~/./bart_to_s3.py',
     retries=3,
     dag=dag)
