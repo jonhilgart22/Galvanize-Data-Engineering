@@ -77,6 +77,16 @@ wind_df.write.parquet("s3a://normalized-data-weather-bart/wind_df{}".format(
     KeyFileName))
 location_df.write.parquet("s3a://normalized-data-weather-bart/location{}".format(
     KeyFileName))
+# save the weather data as a one csv
+main_temp_df.coalesce(1).write.save(
+    "s3a://normalized-data-weather-bart/main-temp-csv-{}".format(KeyFileName),
+    format='csv')
+wind_df.coalesce(1).write.save("s3a://normalized-data-weather-bart/wind_df-csv{}".format(
+    KeyFileName), format = 'csv')
+location_df.coalesce(1).write.save("s3a://normalized-data-weather-bart/location-csv{}".format(
+    KeyFileName), format = 'csv')
+
+
 # onto bart data
 bart_path = "s3a://bart-data-collection/{}/{}/{}/*/*".format(sf_year,
                                                              sf_month, sf_day)
@@ -138,7 +148,7 @@ bart_physical_2 = bart_df.select(
     col("color.2").alias("color_2"),col("bike_flag.2").alias("bike_flag_2"),
     col("train_size.2").alias("train_size_2"),
     col("capacity.2").alias("capacity_2"))
-# write to csv for bart data
+# write to parquet for bart data
 bart_arrival_0.write.parquet(
     "s3a://normalized-data-weather-bart/bart_arrival_0_{}".format(
         KeyFileName))
@@ -157,3 +167,22 @@ bart_physical_1.write.parquet(
 bart_physical_2.write.parquet(
     "s3a://normalized-data-weather-bart/bart_physical_2_{}".format(
         KeyFileName))
+# write to csv for bart data
+bart_arrival_0.coalesce(1).write.save(
+    "s3a://normalized-data-weather-bart/bart_arrival_0_csv{}".format(
+        KeyFileName), format='csv')
+bart_arrival_1.coalesce(1).write.save(
+    "s3a://normalized-data-weather-bart/bart_arrival_1_csv{}".format(
+        KeyFileName), format='csv')
+bart_arrival_2.coalesce(1).write.save(
+    "s3a://normalized-data-weather-bart/bart_arrival_2_csv{}".format(
+        KeyFileName), format= "csv")
+bart_physical_0.coalesce(1).write.save(
+    "s3a://normalized-data-weather-bart/bart_physical_0_csv{}".format(
+        KeyFileName), format = "csv")
+bart_physical_1.coalesce(1).write.save(
+    "s3a://normalized-data-weather-bart/bart_physical_1_csv{}".format(
+        KeyFileName), format = "csv")
+bart_physical_2.coalesce(1).write.save(
+    "s3a://normalized-data-weather-bart/bart_physical_2_csv{}".format(
+        KeyFileName), format = "csv")
