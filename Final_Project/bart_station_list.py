@@ -21,7 +21,7 @@ bart_stations_dict = { \
 'Embarcadero (SF)':'embr',\
 'Fremont':'frmt',\
 'Fruitvale (Oakland)':'ftvl',\
-'Glen Park (SF)':'ftvl',\
+'Glen Park (SF)':'glen',\
 'Hayward':'hayw',\
 'Lafayette':'lafy',\
 'Lake Merritt (Oakland)':'lake',\
