@@ -2,25 +2,13 @@
  "cells": [
   {
    "cell_type": "code",
-   "execution_count": 2,
+   "execution_count": 1,
    "metadata": {
     "collapsed": false,
     "deletable": true,
     "editable": true
    },
-   "outputs": [
-    {
-     "ename": "ImportError",
-     "evalue": "No module named pyspark.sql.functions",
-     "output_type": "error",
-     "traceback": [
-      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
-      "\u001b[0;31mImportError\u001b[0m                               Traceback (most recent call last)",
-      "\u001b[0;32m<ipython-input-2-84ea5f59efba>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m()\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0;32mfrom\u001b[0m \u001b[0mpyspark\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0msql\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mfunctions\u001b[0m \u001b[0;32mimport\u001b[0m \u001b[0;34m*\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      2\u001b[0m \u001b[0;32mfrom\u001b[0m \u001b[0mpyspark\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0msql\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mtypes\u001b[0m \u001b[0;32mimport\u001b[0m \u001b[0;34m*\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      3\u001b[0m \u001b[0;32mfrom\u001b[0m \u001b[0mpyspark\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mml\u001b[0m \u001b[0;32mimport\u001b[0m \u001b[0mPipeline\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      4\u001b[0m \u001b[0;32mfrom\u001b[0m \u001b[0mpyspark\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mml\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mregression\u001b[0m \u001b[0;32mimport\u001b[0m \u001b[0mGBTRegressor\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      5\u001b[0m \u001b[0;32mfrom\u001b[0m \u001b[0mpyspark\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mml\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mfeature\u001b[0m \u001b[0;32mimport\u001b[0m \u001b[0mVectorIndexer\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0mStringIndexer\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mVectorAssembler\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
-      "\u001b[0;31mImportError\u001b[0m: No module named pyspark.sql.functions"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "from pyspark.sql.functions import *\n",
     "from pyspark.sql.types import *\n",
@@ -32,25 +20,13 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 3,
+   "execution_count": 2,
    "metadata": {
-    "collapsed": false,
+    "collapsed": true,
     "deletable": true,
     "editable": true
    },
-   "outputs": [
-    {
-     "ename": "NameError",
-     "evalue": "name 'spark' is not defined",
-     "output_type": "error",
-     "traceback": [
-      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
-      "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
-      "\u001b[0;32m<ipython-input-3-f49728880348>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m()\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mbart_df\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mspark\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mread\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mcsv\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"s3a://raw-data-2016-bart-weather/bart-data2016/date-hour-soo-dest-2016.csv\"\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
-      "\u001b[0;31mNameError\u001b[0m: name 'spark' is not defined"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "bart_df = spark.read.csv(\"s3a://raw-data-2016-bart-weather/bart-data2016/date-hour-soo-dest-2016.csv\")"
    ]
@@ -299,7 +275,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 1,
+   "execution_count": 17,
    "metadata": {
     "collapsed": false,
     "deletable": true,
@@ -307,15 +283,14 @@
    },
    "outputs": [
     {
-     "ename": "NameError",
-     "evalue": "name 'ml_df' is not defined",
-     "output_type": "error",
-     "traceback": [
-      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
-      "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
-      "\u001b[0;32m<ipython-input-1-90be85f8c738>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m()\u001b[0m\n\u001b[1;32m      1\u001b[0m \u001b[0;31m# set columns as integers\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 2\u001b[0;31m \u001b[0mml_df\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mml_df\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mwithColumn\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"temp-avg\"\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0mml_df\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m'temp-avg'\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mcast\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mIntegerType\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      3\u001b[0m \u001b[0mml_df\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mml_df\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mwithColumn\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"temp-low\"\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0mml_df\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m'temp-low'\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mcast\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mIntegerType\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      4\u001b[0m \u001b[0mml_df\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mml_df\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mwithColumn\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"temp-high\"\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0mml_df\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m'temp-high'\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mcast\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mIntegerType\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      5\u001b[0m \u001b[0mml_df\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mml_df\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mwithColumn\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"humidity-avg\"\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0mml_df\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m'humidity-avg'\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mcast\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mIntegerType\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
-      "\u001b[0;31mNameError\u001b[0m: name 'ml_df' is not defined"
-     ]
+     "data": {
+      "text/plain": [
+       "DataFrame[temp-avg: int, temp-low: int, temp-high: int, humidity-avg: int, seapress-avg: int, wind-avg: int, precip-inches: int, month_n: int, day_of_month: int, destination_station: string, total_exits: bigint, indexedStation: double]"
+      ]
+     },
+     "execution_count": 17,
+     "metadata": {},
+     "output_type": "execute_result"
     }
    ],
    "source": [
