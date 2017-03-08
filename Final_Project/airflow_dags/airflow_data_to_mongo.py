@@ -16,11 +16,11 @@ default_args = {
         'retry_delay': timedelta(minutes=5),
       }
 
-dag = DAG('normalize_bart_weather_data', default_args=default_args,
-          schedule_interval='0 10 * * *') # run at 2 am
+dag = DAG('dag_to_mongo', default_args=default_args,
+          schedule_interval='0 12 * * *') # run at 2 am
 # run every 5 mins
 t1 = BashOperator(
     task_id='normalize_data',
-    bash_command='spark-submit ~/./normalization_bart_weather.py',
+    bash_command='python ~/./push_bart-weather_to_mongo.py',
     retries=3,
     dag=dag)
