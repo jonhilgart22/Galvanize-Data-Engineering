@@ -30,6 +30,7 @@ def get_key_names(bucket_s3, sf_year_yes, sf_month_yes, sf_day_yes):
         prefix="bart_physical_0_csv{}/{}/{}/part".format(
         sf_year_yes, sf_month_yes, sf_day_yes))
 
+    #print(bart_physical_key,' first key')
     bart_physical_key_name = ''
     for k in bart_physical_key:
         bart_physical_key_name = k.name
@@ -69,12 +70,20 @@ def insert_into_mongo(bart_arr_key,bart_phy_key,weather_main_t_key,
     db_weather_bart.bart_arrival.insert(
         {'bart_arrival': bart_arrival_info})
 
-
-    bart_physical_key_object = bucket_s3.get_key(
-        bart_phy_key[0])
-    bart_physical_info = bart_physical_key_object.get_contents_as_string()
-    db_weather_bart.bart_physical.insert(
-        {'bart_physical': bart_physical_info})
+    try:
+        bart_physical_key_object = bucket_s3.get_key(
+            bart_phy_key[0])
+        bart_physical_info = bart_physical_key_object.get_contents_as_string()
+        db_weather_bart.bart_physical.insert(
+            {'bart_physical': bart_physical_info})
+    except (IndexError or AttributeError):
+        #print(bart_phy_key, 'bart phy key')
+        bart_physical_key_object = bucket_s3.get_key(
+            bart_phy_key)
+        #print(bart_physical_key_object)
+        bart_physical_info = bart_physical_key_object.get_contents_as_string()
+        db_weather_bart.bart_physical.insert(
+            {'bart_physical': bart_physical_info})
 
     weather_main_temp_key_object = bucket_s3.get_key(
         weather_main_t_key)
